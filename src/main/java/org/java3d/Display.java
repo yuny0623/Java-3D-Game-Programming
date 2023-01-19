@@ -19,7 +19,6 @@ public class Display extends Canvas implements Runnable{
     private boolean running = false;
     private Screen screen;
     private BufferedImage img;
-    private Render render;
     private int[] pixels;
 
     public Display(){
@@ -35,8 +34,6 @@ public class Display extends Canvas implements Runnable{
         running = true;
         thread = new Thread(this);
         thread.start();
-
-        System.out.println("Working!");
     }
 
     private void stop(){
@@ -78,8 +75,6 @@ public class Display extends Canvas implements Runnable{
         Graphics g = bs.getDrawGraphics();
         g.drawImage(img, 0, 0, WIDTH, HEIGHT, null);
         g.dispose();
-
-        System.out.println("draw!");
         bs.show();
     }
 
