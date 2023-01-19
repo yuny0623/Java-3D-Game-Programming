@@ -53,7 +53,7 @@ public class Display extends Canvas implements Runnable{
     }
     public void run(){
         while(running){
-            tick(); // handle time. frame extra...
+            // tick(); // handle time. frame extra...
             render(); // rendering
         }
     }
@@ -61,6 +61,7 @@ public class Display extends Canvas implements Runnable{
     private void tick(){
 
     }
+
     private void render(){
         BufferStrategy bs = this.getBufferStrategy();
         if(bs == null){
@@ -77,6 +78,8 @@ public class Display extends Canvas implements Runnable{
         Graphics g = bs.getDrawGraphics();
         g.drawImage(img, 0, 0, WIDTH, HEIGHT, null);
         g.dispose();
+
+        System.out.println("draw!");
         bs.show();
     }
 
