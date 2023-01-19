@@ -1,6 +1,5 @@
 package org.java3d;
 
-import org.java3d.graphics.Render;
 import org.java3d.graphics.Screen;
 
 import javax.swing.*;
@@ -18,11 +17,17 @@ public class Display extends Canvas implements Runnable{
     private Thread thread;
     private boolean running = false;
     private Screen screen;
+    private Game game;
     private BufferedImage img;
     private int[] pixels;
 
     public Display(){
+        Dimension size = new Dimension(WIDTH, HEIGHT);
+        setPreferredSize(size);
+        setMinimumSize(size);
+        setMaximumSize(size);
         screen = new Screen(WIDTH, HEIGHT);
+        game = new Game();
         img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB); // RGB로 세팅
         pixels = ((DataBufferInt) img.getRaster().getDataBuffer()).getData(); // 버퍼를 통해 변환
     }
@@ -49,7 +54,7 @@ public class Display extends Canvas implements Runnable{
         }
     }
     public void run(){
-        int frames = 0; // amount of grames
+        int frames = 0; // amount of frames
         double unprocessedSeconds = 0;
         long previousTime = System.nanoTime();
         double secondsPerTick = 1 / 60.0;
@@ -85,7 +90,7 @@ public class Display extends Canvas implements Runnable{
 
     // handle time. frame extra...
     private void tick(){
-
+        game.tick();
     }
 
     // rendering
@@ -96,7 +101,7 @@ public class Display extends Canvas implements Runnable{
             return;
         }
 
-        screen.render();
+        screen.render(game);
 
         for(int i = 0; i < WIDTH * HEIGHT; i++){
             pixels[i] = screen.pixels[i];
@@ -113,12 +118,12 @@ public class Display extends Canvas implements Runnable{
         JFrame frame = new JFrame();
 
         frame.add(game);
-        frame.pack();
+        // frame.pack(); // border 에러 때문에 pack()은 setResizable 이후에 와야함.
         frame.setTitle(TITLE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(WIDTH, HEIGHT);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
+        frame.pack(); 
         frame.setVisible(true);
 
         System.out.println("Running...");
