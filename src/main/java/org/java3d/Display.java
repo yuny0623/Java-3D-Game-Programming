@@ -12,7 +12,7 @@ public class Display extends Canvas implements Runnable{
     private static final Long serialVersionUID = 1L;
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
-    public static final String TITLE = "java3d 0.01";
+    public static final String TITLE = "java3d 0.02";
 
     private Thread thread;
     private boolean running = false;
