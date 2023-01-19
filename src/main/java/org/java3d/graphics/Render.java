@@ -5,7 +5,7 @@ import org.java3d.Display;
 public class Render {
     public final int width; //
     public final int height;
-    public final int[] pixels; //
+    public final int[] pixels; // 
 
     private Display display;
 
@@ -26,8 +26,12 @@ public class Render {
                 if(xPix < 0 || xPix >= display.WIDTH){
                     continue;
                 }
-                pixels[xPix + yPix * width] = render.pixels[x + y * render.width];
-                // System.out.println("x: " + x + " y: " + y);
+                int alpha = render.pixels[x + y * render.width];
+
+                // 렌더할 게 없다면 렌더하지 마라. -> 성능 개선
+                if(alpha > 0) {
+                    pixels[xPix + yPix * width] = alpha;
+                }
             }
         }
     }
