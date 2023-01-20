@@ -70,7 +70,7 @@
     sin과 cos의 수학적인 기법을 사용하여 화면에 다양한 연출을 보여준다. 
     -> 참고로 출력문은 절대 연산과정에 삽입하지 말자. 속도가 지나치게 느려진다. 
     
-✔ 3D Game Programming - Episode 6 - Performance Boosting
+✔️ 3D Game Programming - Episode 6 - Performance Boosting
     리팩토링하는 과정이다. 렌더링하지 않아도될 픽셀은 그냥 continue해도 된다. 
     그 외의 테크닉이 소개된다. 이건 다른 분야에서도 유용하게 써먹을 수 있는 내용이다.
     for문을 더 적게 돌 수 있는 방법이 소개된다.  

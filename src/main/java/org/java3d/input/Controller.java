@@ -10,10 +10,10 @@ public class Controller {
 
 
     public void tick(boolean forward, boolean back, boolean left, boolean right, boolean jump, boolean crouch, boolean run){
-        double rotationSpeed = 0.025; // 움직임 회전 속도 제어
-        double walkSpeed = 0.5;
-        double jumpHeight = 0.5; // 점프 높이
-        double crouchHeight = 0.33;
+        double rotationSpeed = 0.025; // 좌우 회전 속도 제어
+        double walkSpeed = 0.5;     // 평균 걷기 속도
+        double jumpHeight = 0.5;    // 점프 높이 제어
+        double crouchHeight = 0.33; // 앉았을때의 높이 제어
         double xMove = 0;
         double zMove = 0;
 

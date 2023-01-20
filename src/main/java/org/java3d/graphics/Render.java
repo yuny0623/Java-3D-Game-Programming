@@ -6,7 +6,6 @@ public class Render {
     public final int height;
     public final int[] pixels; // 픽셀 array
 
-
     public Render(int width, int height){
         this.width = width;
         this.height = height;
@@ -27,7 +26,7 @@ public class Render {
                 }
                 int alpha = render.pixels[x + y * render.width];
 
-                // 렌더할 게 없다면 렌더하지 마라. -> 성능 개선
+                // 성능개선 팁: 렌더할 게 없다면 렌더하지 마라.
                 if(alpha > 0) {
                     pixels[xPix + yPix * width] = alpha;
                 }
