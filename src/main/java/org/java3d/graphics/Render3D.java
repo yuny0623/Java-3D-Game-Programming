@@ -1,6 +1,7 @@
 package org.java3d.graphics;
 
 import org.java3d.Game;
+import org.java3d.input.Controller;
 
 public class Render3D extends Render{
     public double[] zBuffer;  // depth buffer for distance gradient
@@ -10,7 +11,6 @@ public class Render3D extends Render{
         super(width, height);
         zBuffer = new double[width * height];
     }
-
 
     /*
         핵심 code
@@ -23,6 +23,14 @@ public class Render3D extends Render{
 
         double forward = game.controls.z;
         double right = game.controls.x;
+        double up = game.controls.y; // 점프 구현
+        double walking = Math.sin(game.time / 6.0) * 0.5; // 걷는 효과를 준다. 화면이 살짝 흔들리는 효과
+        if(Controller.crouchWalk){
+            walking = Math.sin(game.time / 6.0) * 0.25; // 앉아있는 상태로 걷는 동안에는 걷는 효과를 살짝 감소시킨다. 즉 화면흔들림을 줄인다.
+        }
+        if(Controller.runWalk){
+            walking = Math.sin(game.time / 6.0) * 0.8; // 뛰는 동안에는 걷기 효과를 좀 더 증가시킨다. 화면이 더 흔들리게 만든다.
+        }
 
         double rotation = game.controls.rotation;
         double cosine = Math.cos(rotation);
@@ -31,9 +39,15 @@ public class Render3D extends Render{
         for(int y = 0; y < height; y++){
             double ceiling = (y + - height / 2.0) / height;
 
-            double z = floorPosition / ceiling;
+            double z = (floorPosition + up) / ceiling; // 점프한 높이만큼 바닥에서 더해주기
+            if(Controller.walk){
+                z = (floorPosition + up + walking) / ceiling;
+            }
             if (ceiling < 0){
-                z = ceilingPosition / -ceiling;
+                z = (ceilingPosition - up) / -ceiling; // 점프한 만큼 천장에서 빼주기
+                if (Controller.walk){
+                    z = (ceilingPosition - up - walking) / -ceiling;
+                }
             }
 
             for(int x = 0; x < width; x++){

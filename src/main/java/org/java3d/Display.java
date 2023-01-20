@@ -27,7 +27,7 @@ public class Display extends Canvas implements Runnable{
 
     private int newX = 0 ; // 마우스 좌표
     private int oldX = 0 ; // 마우스 이전 좌표
-    private int fps;
+    private int fps;       // 프레임률
 
 
     public Display(){

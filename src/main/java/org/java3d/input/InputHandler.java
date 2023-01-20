@@ -72,9 +72,7 @@ public class InputHandler implements KeyListener, FocusListener, MouseListener, 
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        MouseX = e.getX(); // getX는 게임창에서의 상대좌표이고 getXOnScreen은 전체 모니터 화면에서의 상대좌표이다.
+        MouseX = e.getX(); // getX()는 게임창에서의 상대좌표이고 getXOnScreen()은 전체 모니터 화면에서의 상대좌표이다.
         MouseY = e.getY();
-
-
     }
 }
