@@ -97,8 +97,11 @@
      */
      
 3D Game Programming - Episode 10 - Floors and Animation
-    
+    floor 생성에 관한 내용 
 3D Game Programming - Episode 11 - Rotation 
+    floor 상에서 대각선, 전진, 후진, 우회전, 좌회전 등을 가능하게함. 이때 rotation
+    의 경우 회전 동작인데 회전을 하려면 원을 그릴 수 있어야함. 원을 그리기 위해서 sin과 cos을 활용한다. 
+    
 3D Game Programming - Episode 12 - User Input 
 3D Game Programming - Episode 13 - Render Distance Limiter!
 3D Game Programming - Episode 14 - Basic Mouse Movement 
