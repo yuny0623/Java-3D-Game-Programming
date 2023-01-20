@@ -3,7 +3,7 @@ package org.java3d.input;
 public class Controller {
     public double x, z, rotation, xa, za, rotationa;
     public void tick(boolean forward, boolean back, boolean left, boolean right, boolean turnLeft, boolean turnRight){
-        double rotationSpeed = 0.025;
+        double rotationSpeed = 0.025; // 움직임 회전 속도 제어
         double walkSpeed = 1;
         double xMove = 0;
         double zMove = 0;
