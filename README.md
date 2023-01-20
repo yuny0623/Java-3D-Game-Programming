@@ -119,7 +119,18 @@
     다룬 기능을 그대로 사용한다.  
     
 3D Game Programming - Episode 15 - Textures + More! 
+    텍스쳐 적용을 구현한다. 텍스쳐 이미지의 int array데이터를 얻어와서 그걸 pixels인 array에
+    넣어주면 된다. 
+
+    이슈: 
+    텍스쳐를 적용하기 위해서는 8비트x8비트 짜리 원하는 이미지를 생성하고 그 이미지의 
+    경로를 지정해줘서 이미지를 읽어와야하는데 이때 사용하는 Texture.class.getResource(fileName)에 이슈가 있다. 
+    java.lang.IllegalArgumentException: input == null! 이라는 Exception이 발생하는데 이건 
+    경로를 제대로 지정해줘도 문제가 발생한다. 그래서 이 기능 대신에 FileInputStream을 사용해서 경로를 넘기면
+    제대로된 데이터를 얻을 수 있다. 아래 링크를 참조하면 된다.
     
+    해결방법: 
+    https://stackoverflow.com/questions/15424834/java-lang-illegalargumentexception-input-null-when-using-imageio-read-to-lo
 
 3D Game Programming - Episode 16 - Walking, Crouching, Sprinting + More
 3D Game Programming - Episode 16.5 - Exporting Runnable Jars
@@ -146,3 +157,8 @@
 3D Game Programming - Episode 34 - Entities
 ```
 
+## Study Review 
+```
+
+
+```
