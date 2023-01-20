@@ -123,7 +123,7 @@ public class Display extends Canvas implements Runnable{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
-        frame.pack(); 
+        frame.pack();
         frame.setVisible(true);
 
         System.out.println("Running...");
