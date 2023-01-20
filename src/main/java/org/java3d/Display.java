@@ -1,6 +1,7 @@
 package org.java3d;
 
 import org.java3d.graphics.Screen;
+import org.java3d.input.Controller;
 import org.java3d.input.InputHandler;
 
 import javax.swing.*;
@@ -23,6 +24,10 @@ public class Display extends Canvas implements Runnable{
     private int[] pixels;
 
     private InputHandler input;
+
+    private int newX = 0 ; // 마우스 좌표
+    private int oldX = 0 ; // 마우스 이전 좌표
+
 
     public Display(){
         Dimension size = new Dimension(WIDTH, HEIGHT);
@@ -94,6 +99,22 @@ public class Display extends Canvas implements Runnable{
             }
             render();
             frames++;
+
+            newX = InputHandler.MouseX;
+            if(newX > oldX){
+                System.out.println("RIGHT!!!");
+                Controller.turnRight = true;
+            }
+            if(newX < oldX) {
+                System.out.println("Left!!!");
+                Controller.turnLeft = true;
+            }
+            if(newX == oldX){
+                System.out.println("Still!!!");
+                Controller.turnLeft = false;
+                Controller.turnRight = false;
+            }
+            oldX = newX;
         }
     }
 
@@ -123,11 +144,16 @@ public class Display extends Canvas implements Runnable{
     }
 
     public static void main(String[] args) {
+        // create new cursor for game play
+        BufferedImage cursor = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB); // 투명한 마우스 커서를 만든다. TYPE_INT_RGB를 사용하면 검은색 커서가 나옴)
+        Cursor blank = Toolkit.getDefaultToolkit().createCustomCursor(cursor, new Point(0, 0), "blank");
+
         Display game = new Display();
         JFrame frame = new JFrame();
 
         frame.add(game);
         // frame.pack(); // border 에러 때문에 pack()은 setResizable 이후에 와야함.
+        frame.getContentPane().setCursor(blank); // 실제 마우스 커서 적용
         frame.setTitle(TITLE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
@@ -136,7 +162,6 @@ public class Display extends Canvas implements Runnable{
         frame.setVisible(true);
 
         System.out.println("Running...");
-
         game.start();
     }
 }

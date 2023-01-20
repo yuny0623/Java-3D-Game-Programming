@@ -112,7 +112,8 @@
     이걸 gradient까지 넣어서 자연스럽게 거리표현까지 하면서도 먼 거리를 표현할 수 있을까? 
     그에 대해 다룬다. 
 
-3D Game Programming - Episode 14 - Basic Mouse Movement 
+3D Game Programming - Episode 14 - Basic Mouse Movement
+ 
 3D Game Programming - Episode 15 - Textures + More! 
 3D Game Programming - Episode 16 - Walking, Crouching, Sprinting + More
 3D Game Programming - Episode 16.5 - Exporting Runnable Jars

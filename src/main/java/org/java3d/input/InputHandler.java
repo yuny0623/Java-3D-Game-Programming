@@ -5,7 +5,8 @@ import java.awt.event.*;
 public class InputHandler implements KeyListener, FocusListener, MouseListener, MouseMotionListener {
 
     public boolean[] key = new boolean[68836];
-
+    public static int MouseX;
+    public static int MouseY;
     @Override
     public void focusGained(FocusEvent e) {
 
@@ -71,6 +72,9 @@ public class InputHandler implements KeyListener, FocusListener, MouseListener, 
 
     @Override
     public void mouseMoved(MouseEvent e) {
+        MouseX = e.getX(); // getX는 게임창에서의 상대좌표이고 getXOnScreen은 전체 모니터 화면에서의 상대좌표이다.
+        MouseY = e.getY();
+
 
     }
 }
