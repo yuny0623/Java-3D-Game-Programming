@@ -113,8 +113,14 @@
     그에 대해 다룬다. 
 
 3D Game Programming - Episode 14 - Basic Mouse Movement
- 
+    마우스 커서를 추가한다. 마우스 커서가 밖으로 나가면 더 이상 회전하지 않는 이슈가 있다. 
+    해당 이슈는 이후 강좌에서 추가적으로 수정될 예정임. 마우스의 현재 위치를 알아낸 뒤 해당 위치가 
+    다음 위치와 다른지, 더 큰지, 작은지를 비교해서 좌우로 회전할 방향을 정한다. 히전은 이전에 Episode 11의 rotation에서
+    다룬 기능을 그대로 사용한다.  
+    
 3D Game Programming - Episode 15 - Textures + More! 
+    
+
 3D Game Programming - Episode 16 - Walking, Crouching, Sprinting + More
 3D Game Programming - Episode 16.5 - Exporting Runnable Jars
 3D Game Programming - Episode 17 - Small Adjustments + Birthday!

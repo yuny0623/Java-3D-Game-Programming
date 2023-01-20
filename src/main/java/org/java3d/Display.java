@@ -27,6 +27,7 @@ public class Display extends Canvas implements Runnable{
 
     private int newX = 0 ; // 마우스 좌표
     private int oldX = 0 ; // 마우스 이전 좌표
+    private int fps;
 
 
     public Display(){
@@ -89,6 +90,7 @@ public class Display extends Canvas implements Runnable{
                 tickCount++;
                 if(tickCount % 60 == 0){
                     System.out.println(frames + "fps");
+                    fps = frames;
                     previousTime += 1000;
                     frames = 0;
                 }
@@ -127,7 +129,7 @@ public class Display extends Canvas implements Runnable{
     private void render(){
         BufferStrategy bs = this.getBufferStrategy();
         if(bs == null){
-            createBufferStrategy(3); // because 3 dimension
+            createBufferStrategy(3); // because we work in 3 dimension
             return;
         }
 
@@ -139,6 +141,9 @@ public class Display extends Canvas implements Runnable{
 
         Graphics g = bs.getDrawGraphics();
         g.drawImage(img, 0, 0, WIDTH, HEIGHT, null);
+        g.setFont(new Font("Verdana", 2, 40)); // style은 글자체를 의미한다. bold나 italic등등
+        g.setColor(Color.WHITE); // 폰트의 색을 저장한다.
+        g.drawString(fps + " FPS", 15, 50); // 글자를 그린다.
         g.dispose();
         bs.show();
     }
@@ -153,7 +158,7 @@ public class Display extends Canvas implements Runnable{
 
         frame.add(game);
         // frame.pack(); // border 에러 때문에 pack()은 setResizable 이후에 와야함.
-        frame.getContentPane().setCursor(blank); // 실제 마우스 커서 적용
+        // frame.getContentPane().setCursor(blank); // custom했던 마우스 커서 적용
         frame.setTitle(TITLE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
