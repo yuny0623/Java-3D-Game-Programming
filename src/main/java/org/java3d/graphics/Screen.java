@@ -30,7 +30,9 @@ public class Screen extends Render{
 //        }
         render.floor(game);
         render.renderDistanceLimiter(); // 먼 곳이 어둡게 만들어줌.
-        render.walls(); // 벽 생성은 render distance 보다 이후에 선언되야만 render distance가 적용되지 않는다.
+        // render.walls(); // 벽 생성은 render distance 보다 이후에 선언되야만 render distance가 적용되지 않는다.
+        render.renderWall(0, 0.5, 1.5, 0);
+        // render.renderWall(0, 0.5, 1.5, 0);
         draw(render, 0, 0);
     }
 }

@@ -33,6 +33,12 @@
     2️⃣  매 주차별 강의에 대한 정리와 후기를 남길 수 있도록 한다. 
 ```
 
+## Study Result
+```
+
+
+```
+
 ## 📚 Study Log 
 ```
 ✔ 3D Game Programming - Episode 1 - Window
@@ -161,10 +167,15 @@
     z 축에 근거한 벽 생성. z축 즉 깊이가 얕으면 화면과 가까운 벽 생성, 깊으면 화면과 멀리 떨어진 벽 생성. 
 
 ✔ 3D Game Programming - Episode 18.1 - A Few More Things
-
+    리팩토링. Episode 18에서 wall을 생성하게 되면 wall에도 render distance가 적용되서 벽의 중간이 어둡게 보인다. 
+    이걸 해결하기 위해 Screen class에서 렌더를 돌릴때 render distance 를 돌리고 난 이후에 벽 생성을 진행하는 방식으로 수정한다. 
 
 ✔ 3D Game Programming - Episode 18.5 - Creating an EXE File in Java
+    jar파일을 EXE파일로 생성하기, Launch4j를 활용함. 
+    
 ✔ 3D Game Programming - Episode 19 - Rendering Walls
+    rotation에 따라 sreen에 생성한 wall도 자연스러운 방향으로 렌더될 수 있도록 수정. 
+
 ✔ 3D Game Programming - Episode 20 - Continuing Walls, Fixing Bugs, and Managing Crashes
 ✔ 3D Game Programming - Episode 21 - Texturing Walls, Fixing Clipping, and Fixing the Mouse
 ✔ 3D Game Programming - Episode 22 - Random Level Generator + Properly Fixing Clipping
@@ -184,6 +195,5 @@
 
 ## 🤖 Study Review 
 ```
-    그래픽스 재밌네요... ㅎㅎ 
-    근데 생각보다 어려움 
+    재밌음. 생각보다 어렵고. 
 ```
