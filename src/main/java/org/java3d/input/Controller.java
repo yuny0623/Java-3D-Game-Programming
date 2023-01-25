@@ -50,6 +50,7 @@ public class Controller {
             y -= crouchHeight;
             run = false; // 앉아있는 동안에는 달릴 수 없다.
             crouchWalk = true;
+            walkSpeed = 0.2; // 앉아서 걸을때는 속도를 줄인다.
         }
         if(run){
             walkSpeed = 1;

@@ -143,9 +143,23 @@
     https://stackoverflow.com/questions/15424834/java-lang-illegalargumentexception-input-null-when-using-imageio-read-to-lo
 
 ✔ 3D Game Programming - Episode 16 - Walking, Crouching, Sprinting + More
+    게임을 run하고나서 따로 클릭을 하지 않고도 게임창에 자동으로 Focus가 맞춰져있도록 수정함. 
+    crouch모드에서는 즉 앉아서 걸을때는 걷기 속도를 감소시킨다. 
+    
 ✔ 3D Game Programming - Episode 16.5 - Exporting Runnable Jars
+    jar 파일 export 하는 내용 
+    
 ✔ 3D Game Programming - Episode 17 - Small Adjustments + Birthday!
-✔ 3D Game Programming - Episode 17.5 - Creating an Applet 3D Game Programming - Episode 18 - The Beginning of Walls
+    코드 최적화 및 걷기 효과 수정 
+    
+✔ 3D Game Programming - Episode 17.5 - Creating an Applet
+    web browser 에서 돌릴 수 있도록 applet으로 만들어보자. 
+    applet은 JAR File로 export 하면 된다. runnable jar file이 아니라 그냥 JAR File이다.   
+    .html파일에 applet 태그를 선언해주면 applet사용이 가능함. 
+    
+✔ 3D Game Programming - Episode 18 - The Beginning of Walls
+    z 축에 근거한 벽 생성. z축 즉 깊이가 얕으면 화면과 가까운 벽 생성, 깊으면 화면과 멀리 떨어진 벽 생성. 
+
 ✔ 3D Game Programming - Episode 18.1 - A Few More Things
 ✔ 3D Game Programming - Episode 18.5 - Creating an EXE File in Java
 ✔ 3D Game Programming - Episode 19 - Rendering Walls

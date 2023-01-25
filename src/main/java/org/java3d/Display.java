@@ -47,7 +47,7 @@ public class Display extends Canvas implements Runnable{
         addMouseMotionListener(input);
     }
 
-    private void start(){
+    public synchronized void start(){
         if(running) {
             return;
         }
@@ -56,7 +56,7 @@ public class Display extends Canvas implements Runnable{
         thread.start();
     }
 
-    private void stop(){
+    public synchronized void stop(){
         if(!running){
             return;
         }
@@ -82,6 +82,8 @@ public class Display extends Canvas implements Runnable{
             long passedTime = currentTime - previousTime;
             previousTime = currentTime;
             unprocessedSeconds += passedTime / 1000000000.0;
+
+            requestFocus(); // 마우스를 클릭하지 않고도 게임 창에 이미 진입하게 해줌. 미리 Focus를 맞춰줌.
 
             while(unprocessedSeconds > secondsPerTick){
                 tick();

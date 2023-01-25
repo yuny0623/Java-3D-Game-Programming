@@ -3,6 +3,8 @@ package org.java3d.graphics;
 import org.java3d.Game;
 import org.java3d.input.Controller;
 
+import java.util.Random;
+
 public class Render3D extends Render{
     public double[] zBuffer;  // depth buffer for distance gradient
     private double renderDistance = 5000;
@@ -21,7 +23,7 @@ public class Render3D extends Render{
         // double ceilingPosition = Math.sin(game.time / 10) + 10; // 이렇게 하면 천장이 움직이는 연출을 할 수 있다. 해당 연출은 바닥에도 적용할 수 있다.
         // double ceilingPosition = 800; // 이 값을 800 정도로 하면 천장이 사라지는데 그러면 sky 연출을 할 수 있다.
 
-        double forward = game.controls.z;
+        double forward = game.time% 100.0 / 20.0;
         double right = game.controls.x;
         double up = game.controls.y; // 점프 구현
         double walking = Math.sin(game.time / 6.0) * 0.5; // 걷는 효과를 준다. 화면이 살짝 흔들리는 효과
@@ -32,7 +34,8 @@ public class Render3D extends Render{
             walking = Math.sin(game.time / 6.0) * 0.8; // 뛰는 동안에는 걷기 효과를 좀 더 증가시킨다. 화면이 더 흔들리게 만든다.
         }
 
-        double rotation = game.controls.rotation;
+        double rotation = 0;
+        // double rotation = game.controls.rotation;
         double cosine = Math.cos(rotation);
         double sine = Math.sin(rotation);
 
@@ -63,6 +66,99 @@ public class Render3D extends Render{
                 if (z > 500){
                     pixels[x + y * width] = 0;
                 }
+            }
+        }
+
+        Random random = new Random(100);
+        // 첫번쨰 벽 생성
+        for(int i = 0; i < 20000; i++) {
+            double xx = random.nextDouble(); // horizontal
+            double yy = random.nextDouble(); // vertical
+            double zz = 1.5  - forward / 16; // depth
+
+            int xPixel = (int) (xx / zz * height / 2 + width / 2);
+            int yPixel = (int) (yy / zz * height / 2 + height / 2);
+            if (xPixel >= 0 && yPixel >= 0 && xPixel < width && yPixel < height) {
+                pixels[xPixel + yPixel * width] = 0xfffff;
+            }
+        }
+        for(int i = 0; i < 20000; i++) {
+            double xx = random.nextDouble() - 1; // horizontal
+            double yy = random.nextDouble(); // vertical
+            double zz = 1.5  - forward / 16; // depth
+
+            int xPixel = (int) (xx / zz * height / 2 + width / 2);
+            int yPixel = (int) (yy / zz * height / 2 + height / 2);
+            if (xPixel >= 0 && yPixel >= 0 && xPixel < width && yPixel < height) {
+                pixels[xPixel + yPixel * width] = 0xfffff;
+            }
+        }
+        for(int i = 0; i < 20000; i++) {
+            double xx = random.nextDouble() - 1; // horizontal
+            double yy = random.nextDouble() - 1; // vertical
+            double zz = 1.5  - forward / 16; // depth
+
+            int xPixel = (int) (xx / zz * height / 2 + width / 2);
+            int yPixel = (int) (yy / zz * height / 2 + height / 2);
+            if (xPixel >= 0 && yPixel >= 0 && xPixel < width && yPixel < height) {
+                pixels[xPixel + yPixel * width] = 0xfffff;
+            }
+        }
+        for(int i = 0; i < 20000; i++) {
+            double xx = random.nextDouble(); // horizontal
+            double yy = random.nextDouble() - 1; // vertical
+            double zz = 1.5  - forward / 16; // depth
+
+            int xPixel = (int) (xx / zz * height / 2 + width / 2);
+            int yPixel = (int) (yy / zz * height / 2 + height / 2);
+            if (xPixel >= 0 && yPixel >= 0 && xPixel < width && yPixel < height) {
+                pixels[xPixel + yPixel * width] = 0xfffff;
+            }
+        }
+
+        // 두번째 벽 생성
+        for(int i = 0; i < 20000; i++) {
+            double xx = random.nextDouble(); // horizontal
+            double yy = random.nextDouble(); // vertical
+            double zz = 2  - forward / 16; // depth
+
+            int xPixel = (int) (xx / zz * height / 2 + width / 2);
+            int yPixel = (int) (yy / zz * height / 2 + height / 2);
+            if (xPixel >= 0 && yPixel >= 0 && xPixel < width && yPixel < height) {
+                pixels[xPixel + yPixel * width] = 0xfffff;
+            }
+        }
+        for(int i = 0; i < 20000; i++) {
+            double xx = random.nextDouble() - 1; // horizontal
+            double yy = random.nextDouble(); // vertical
+            double zz = 2  - forward / 16; // depth
+
+            int xPixel = (int) (xx / zz * height / 2 + width / 2);
+            int yPixel = (int) (yy / zz * height / 2 + height / 2);
+            if (xPixel >= 0 && yPixel >= 0 && xPixel < width && yPixel < height) {
+                pixels[xPixel + yPixel * width] = 0xfffff;
+            }
+        }
+        for(int i = 0; i < 20000; i++) {
+            double xx = random.nextDouble() - 1; // horizontal
+            double yy = random.nextDouble() - 1; // vertical
+            double zz = 2  - forward / 16; // depth
+
+            int xPixel = (int) (xx / zz * height / 2 + width / 2);
+            int yPixel = (int) (yy / zz * height / 2 + height / 2);
+            if (xPixel >= 0 && yPixel >= 0 && xPixel < width && yPixel < height) {
+                pixels[xPixel + yPixel * width] = 0xfffff;
+            }
+        }
+        for(int i = 0; i < 20000; i++) {
+            double xx = random.nextDouble(); // horizontal
+            double yy = random.nextDouble() - 1; // vertical
+            double zz = 2  - forward / 16; // depth
+
+            int xPixel = (int) (xx / zz * height / 2 + width / 2);
+            int yPixel = (int) (yy / zz * height / 2 + height / 2);
+            if (xPixel >= 0 && yPixel >= 0 && xPixel < width && yPixel < height) {
+                pixels[xPixel + yPixel * width] = 0xfffff;
             }
         }
     }
