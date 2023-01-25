@@ -1,15 +1,18 @@
 package org.java3d;
 
 import org.java3d.input.Controller;
+import org.java3d.level.Level;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Game {
     public int time;
     public Controller controls;
+    public Level level;
+
     public Game(){
         controls = new Controller();
+        level = new Level(20, 20);
     }
 
     public void tick(boolean[] key){

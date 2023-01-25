@@ -182,8 +182,12 @@
     리팩토링을 진행한다. 
     
 ✔ 3D Game Programming - Episode 21 - Texturing Walls, Fixing Clipping, and Fixing the Mouse
+    생성된 wall에 texture 를 입힌다. 텍스쳐를 하나의 이미지 파일로 간주하고 텍스쳐 하나하나는 해당 이미지에서
+    일종의 섹터로 구분해서 읽어들인다. 마인크래프트에서 텍스쳐를 관리하는 방식과 비슷한 방식이다. 
     
 ✔ 3D Game Programming - Episode 22 - Random Level Generator + Properly Fixing Clipping
+    
+
 ✔ 3D Game Programming - Episode 23 - Graphical User Interface(GUI) Launcher
 ✔ 3D Game Programming - Episode 24 - Making Our Launcher Work
 ✔ 3D Game Programming - Episode 25 - Writing and Reading Files
