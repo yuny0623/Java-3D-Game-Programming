@@ -70,7 +70,7 @@ public class Render3D extends Render{
                 int yPix = (int) (yy + forward);
                 zBuffer[x + y * width] = z;
                 //pixels[x + y * width] = ((xPix & 15) * 16) | ((yPix & 15) * 16) << 8;    // 기본값 사용하기
-                pixels[x + y * width] = Texture.floor.pixels[(xPix & 7) + (yPix & 7) * 8]; // 텍스쳐 적용하기
+                pixels[x + y * width] = Texture.floor.pixels[(xPix & 7) + (yPix & 7) * 16]; // 텍스쳐 적용하기
                 if (z > 500){
                     pixels[x + y * width] = 0;
                 }
@@ -80,10 +80,10 @@ public class Render3D extends Render{
 
     public void renderWall(double xLeft, double xRight, double zDistanceLeft, double zDistanceRight, double yHeight){
 
-        double upCorrect = 0.062;
-        double rightCorrect = 0.062;
-        double forwardCorrect = 0.062;
-        double walkCorrect = -0.062;
+        double upCorrect = 0.0625;
+        double rightCorrect = 0.0625;
+        double forwardCorrect = 0.0625;
+        double walkCorrect = -0.0625;
 
         double xcLeft = ((xLeft) - (right * rightCorrect)) * 2;
         double zcLeft = ((zDistanceLeft) - (forward * forwardCorrect)) * 2;
@@ -103,6 +103,27 @@ public class Render3D extends Render{
 
         double xPixelLeft = (rotLeftSideX / rotLeftSideZ * height + width / 2);
         double xPixelRight = (rotRightSideX / rotRightSideZ * height + width / 2);
+
+        double tex30 = 0;
+        double tex40 = 8;
+        double clip = 0.5;
+
+        if(rotLeftSideZ < clip && rotRightSideZ < clip){
+            return;
+        }
+
+        if(rotLeftSideZ < clip){
+            double clip0 = (clip - rotLeftSideZ) / (rotRightSideZ - rotLeftSideZ);
+            rotLeftSideZ = rotLeftSideZ + (rotRightSideZ - rotLeftSideZ) * clip0;
+            rotLeftSideX = rotLeftSideX + (rotRightSideX - rotLeftSideX) * clip0;
+            tex30 = tex30  + (tex40 - tex30) * clip0;
+        }
+        if(rotRightSideZ < clip){
+            double clip0 = (clip - rotLeftSideZ) / (rotRightSideZ - rotLeftSideZ);
+            rotRightSideZ = rotLeftSideZ + (rotRightSideZ - rotLeftSideZ) * clip0;
+            rotRightSideX = rotLeftSideX + (rotRightSideX - rotLeftSideX) * clip0;
+            tex30 = tex30  + (tex40 - tex30) * clip0;
+        }
 
         if(xPixelLeft >= xPixelRight){
             return;
@@ -125,8 +146,8 @@ public class Render3D extends Render{
 
         double tex1 = 1 / rotLeftSideZ;
         double tex2 = 1 / rotRightSideZ;
-        double tex3 = 0 / rotLeftSideZ;
-        double tex4 = 8 / rotRightSideZ - tex3;
+        double tex3 = tex30 / rotLeftSideZ;
+        double tex4 = tex40 / rotRightSideZ - tex3;
 
         for(int x = xPixelLeftInt; x < xPixelRightInt; x ++){
             double pixelRotation = (x - xPixelLeft) / (xPixelRight - xPixelLeft);
@@ -150,7 +171,9 @@ public class Render3D extends Render{
             for(int y = yPixelTopInt; y < yPixelBottomInt; y++){
                 double pixelRotationY = (y - yPixelTop) / (yPixelBottom - yPixelTop);
                 int yTexture = (int) (8 * pixelRotationY);
-                pixels[x + y * width] = xTexture * 100 + yTexture * 100 * 256;
+                pixels[x + y * width] = Texture.floor.pixels[((xTexture & 7) + 8) + (yTexture & 7) * 16]; // 텍스쳐 적용하기
+                // pixels[x + y * width] = xTexture * 100 + yTexture * 100 * 256;
+
                 zBuffer[x + y * width] = 1/ (tex1 + (tex2 - tex1) * pixelRotation) * 8;
             }
         }

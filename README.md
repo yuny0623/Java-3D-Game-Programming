@@ -1,4 +1,4 @@
-# 🎮 3D Game Programming via Java 
+# 🎮 [Computer Graphics Study] 3D Game Programming via Java 
 
 ## 📅 Date 
 ```
@@ -22,15 +22,15 @@
 
 ## 🥅 Study Goal 
 ```
-    1️⃣ 3D Game을 Java로 만들어보는 것을 목표로 한다. 
-    2️⃣ 3D Programming에 대한 기본적인 개념을 알아보도록 하자. 
-    3️⃣ 그래픽스에 대한 대략적인 이해를 할 수 있도록 하자. 
+    1️⃣ 3D Game을 Java로 만들어본다. 
+    2️⃣ 3D Programming에 대한 기본적인 개념을 알아보도록 한다. 
+    3️⃣ 그래픽 렌더링에 대한 대략적인 이해를 할 수 있도록 한다. 
 ```
 
 ## ✒ How to study 
 ```
-    1️⃣  직접 관련 강의를 구현하고 커스텀하도록 한다. 
-    2️⃣  매 주차별 강의에 대한 정리와 후기를 남길 수 있도록 한다. 
+    1️⃣  강의를 듣고 예제를 구현하고 Custom하도록 한다. 
+    2️⃣  주차별 강의에 대한 스터디 내용 정리와 후기를 남길 수 있도록 한다. 
 ```
 
 ## Study Result
@@ -177,8 +177,12 @@
     rotation에 따라 sreen에 생성한 wall도 자연스러운 방향으로 렌더될 수 있도록 수정. 
 
 ✔ 3D Game Programming - Episode 20 - Continuing Walls, Fixing Bugs, and Managing Crashes
+    벽 생성을 하고 나서 벽을 보고 걷게 되면 벽에도 마찬가지로 걷기 효과가 적용된다. 
+    그래서 벽이 위아래로 bounce하는 연출이 나온다. 벽 or object 걷기 효과가 적용되면 안되기 떄문에 이와 관련된
+    리팩토링을 진행한다. 
     
 ✔ 3D Game Programming - Episode 21 - Texturing Walls, Fixing Clipping, and Fixing the Mouse
+    
 ✔ 3D Game Programming - Episode 22 - Random Level Generator + Properly Fixing Clipping
 ✔ 3D Game Programming - Episode 23 - Graphical User Interface(GUI) Launcher
 ✔ 3D Game Programming - Episode 24 - Making Our Launcher Work
@@ -192,9 +196,4 @@
 ✔ 3D Game Programming - Episode 32 - Sprite Mapping
 ✔ 3D Game Programming - Episode 33 - High Resolution Rendering
 ✔ 3D Game Programming - Episode 34 - Entities
-```
-
-## 🤖 Study Review 
-```
-    재밌음. 생각보다 어렵고. 
 ```
