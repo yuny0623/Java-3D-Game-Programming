@@ -1,16 +1,17 @@
 # 🎮 [Computer Graphics Study] 3D Game Programming via Java 
+### 자바를 활용한 3D Game Programming
 
 ## 📅 Date 
 ```
     📆 2023.01.19 ~ 
 ```
 
-## ▶ How to play game
+## 🕹️ How to play 
 ```
-    ⬆ w: 전진
-    ⬅ A: 좌로 이동
-    ⬇ S: 후진  
-    ➡ D: 우로 이동 
+    ⬆️ w: 전진
+    ⬅️ A: 좌로 이동
+    ⬇️ S: 후진  
+    ➡️ D: 우로 이동 
     🖱️ Mouse: 시점 변환 
 ```
 
@@ -41,18 +42,18 @@
 
 ## 📚 Study Log 
 ```
-✔ 3D Game Programming - Episode 1 - Window
+✅ 3D Game Programming - Episode 1 - Window
     Java Swing을 사용하기에 꽤나 익숙하게 시작할 수 있다. 
     (이전에 Swing을 써봐서 꽤 익숙한 내용이다.)
     
-✔ 3D Game Programming - Episode 2 - Game Loop 
+✅ 3D Game Programming - Episode 2 - Game Loop 
     게임 루프를 만들기 위해 thread를 응용한다. 별로 어려운 내용은 없다.
     그냥 thread start하는 내용들이 있다.  
     
-✔ 3D Game Programming - Episode 3 - Arrays
+✅ 3D Game Programming - Episode 3 - Arrays
     pixel value를 Array안에 저장하겠다는 내용이다. 
     
-✔ 3D Game Programming - Episode 4 - Drawing Pixels!
+✅ 3D Game Programming - Episode 4 - Drawing Pixels!
     랜덤한 값의 pixel Array를 화면에 쏴준다. 이 부분에서 이전에 본 적 없는 API가 사용된다. 
     아래의 코드 조각들이 등장하는데 모르고 지나치기엔 꽤 중요한 부분이다. 
     픽셀 연산과는 상관없지만 직접 화면에 쏘는 바로 그 과정이 이 부분이다. 
@@ -69,27 +70,27 @@
         bs.show();
     */
     
-✔ 3D Game Programming - Episode 4.5 - How Rendering Works
+✅ 3D Game Programming - Episode 4.5 - How Rendering Works
     렌더링과 관련된 간략한 설명이다. 
     
-✔ 3D Game Programming - Episode 5 - Playing with Pixels!
+✅ 3D Game Programming - Episode 5 - Playing with Pixels!
     sin과 cos의 수학적인 기법을 사용하여 화면에 다양한 연출을 보여준다. 
     -> 참고로 출력문은 절대 연산과정에 삽입하지 말자. 속도가 지나치게 느려진다. 
     
-✔️ 3D Game Programming - Episode 6 - Performance Boosting
+✅️ 3D Game Programming - Episode 6 - Performance Boosting
     리팩토링하는 과정이다. 렌더링하지 않아도될 픽셀은 그냥 continue해도 된다. 
     그 외의 테크닉이 소개된다. 이건 다른 분야에서도 유용하게 써먹을 수 있는 내용이다.
     for문을 더 적게 돌 수 있는 방법이 소개된다.  
     
-✔ 3D Game Programming - Episode 7 - FPS Counter
+✅ 3D Game Programming - Episode 7 - FPS Counter
     FPS Counter를 만드는 공식이 어떻게 되는지 이해가 가지 않을 수 있다.
     특정 시간에 한해 렌더링이 일어나는 수를 측정하고 그 두 가지 수 사이의 계산이 진행된다. 
     아마 프레임 율에 관한 이해가 있어야지 이해되는 부분이라고 생각된다. 
     
-✔ 3D Game Programming - Episode 8 - Alpha Suppport and More
+✅ 3D Game Programming - Episode 8 - Alpha Suppport and More
     픽셀 연산에 관여되는 수를 바꿈으로써 다양한 연출이 가능하다. 
     
-✔ 3D Game Programming - Episode 9 - Beginning 3D 
+✅ 3D Game Programming - Episode 9 - Beginning 3D 
     3D에 대한 가장 기본적인 구현이 나온다. 정면에 보이는 간단한 바닥과 천장을 보여준다. 
     나오는 공식이 이해가 안될텐데 관련된 설명 중 가장 근접한 설명은 아래 설명인 것 같다. 
     사실 공식을 봐도 모르겠고 설명도 잘 이해가 안간다. 아마 실제 3D 좌표계와 화면 상의 
@@ -112,29 +113,29 @@
     Am i on the right track? I'm very tired
      */
      
-✔ 3D Game Programming - Episode 10 - Floors and Animation
+✅ 3D Game Programming - Episode 10 - Floors and Animation
     floor 생성에 관한 내용이다.  
     
-✔ 3D Game Programming - Episode 11 - Rotation 
+✅ 3D Game Programming - Episode 11 - Rotation 
     floor 상에서 대각선, 전진, 후진, 우회전, 좌회전 등을 가능하게함. 이때 rotation
     의 경우 회전 동작인데 회전을 하려면 원을 그릴 수 있어야함. 원을 그리기 위해서 sin과 cos을 활용한다. 
     
-✔ 3D Game Programming - Episode 12 - User Input
+✅ 3D Game Programming - Episode 12 - User Input
     우리가 게임을 조작하는 것처럼 W A S D키를 사용해서 앞,뒤,좌,우 움직임을 실행할 수 있도록 한다. 
     Key Event를 받아서 해당 키에 대한 조작을 실행한다. 
      
-✔ 3D Game Programming - Episode 13 - Render Distance Limiter!
+✅ 3D Game Programming - Episode 13 - Render Distance Limiter!
     floor에서 먼 거리까지 렌더링을 하기 때문에 보기 좋지 않은 부분이 있다. 
     이걸 gradient까지 넣어서 자연스럽게 거리표현까지 하면서도 먼 거리를 표현할 수 있을까? 
     그에 대해 다룬다. 
 
-✔ 3D Game Programming - Episode 14 - Basic Mouse Movement
+✅ 3D Game Programming - Episode 14 - Basic Mouse Movement
     마우스 커서를 추가한다. 마우스 커서가 밖으로 나가면 더 이상 회전하지 않는 이슈가 있다. 
     해당 이슈는 이후 강좌에서 추가적으로 수정될 예정임. 마우스의 현재 위치를 알아낸 뒤 해당 위치가 
     다음 위치와 다른지, 더 큰지, 작은지를 비교해서 좌우로 회전할 방향을 정한다. 히전은 이전에 Episode 11의 rotation에서
     다룬 기능을 그대로 사용한다.  
     
-✔ 3D Game Programming - Episode 15 - Textures + More! 
+✅ 3D Game Programming - Episode 15 - Textures + More! 
     텍스쳐 적용을 구현한다. 텍스쳐 이미지의 int array데이터를 얻어와서 그걸 pixels인 array에
     넣어주면 된다. 
 
@@ -148,57 +149,57 @@
     해결방법: 
     https://stackoverflow.com/questions/15424834/java-lang-illegalargumentexception-input-null-when-using-imageio-read-to-lo
 
-✔ 3D Game Programming - Episode 16 - Walking, Crouching, Sprinting + More
+✅ 3D Game Programming - Episode 16 - Walking, Crouching, Sprinting + More
     게임을 run하고나서 따로 클릭을 하지 않고도 게임창에 자동으로 Focus가 맞춰져있도록 수정함. 
     crouch모드에서는 즉 앉아서 걸을때는 걷기 속도를 감소시킨다. 
     
-✔ 3D Game Programming - Episode 16.5 - Exporting Runnable Jars
+✅ 3D Game Programming - Episode 16.5 - Exporting Runnable Jars
     jar 파일 export 하는 내용 
     
-✔ 3D Game Programming - Episode 17 - Small Adjustments + Birthday!
+✅ 3D Game Programming - Episode 17 - Small Adjustments + Birthday!
     코드 최적화 및 걷기 효과 수정 
     
-✔ 3D Game Programming - Episode 17.5 - Creating an Applet
+✅ 3D Game Programming - Episode 17.5 - Creating an Applet
     web browser 에서 돌릴 수 있도록 applet으로 만들어보자. 
     applet은 JAR File로 export 하면 된다. runnable jar file이 아니라 그냥 JAR File이다.   
     .html파일에 applet 태그를 선언해주면 applet사용이 가능함. 
     
-✔ 3D Game Programming - Episode 18 - The Beginning of Walls
+✅ 3D Game Programming - Episode 18 - The Beginning of Walls
     z 축에 근거한 벽 생성. z축 즉 깊이가 얕으면 화면과 가까운 벽 생성, 깊으면 화면과 멀리 떨어진 벽 생성. 
 
-✔ 3D Game Programming - Episode 18.1 - A Few More Things
+✅ 3D Game Programming - Episode 18.1 - A Few More Things
     리팩토링. Episode 18에서 wall을 생성하게 되면 wall에도 render distance가 적용되서 벽의 중간이 어둡게 보인다. 
     이걸 해결하기 위해 Screen class에서 렌더를 돌릴때 render distance 를 돌리고 난 이후에 벽 생성을 진행하는 방식으로 수정한다. 
 
-✔ 3D Game Programming - Episode 18.5 - Creating an EXE File in Java
+✅ 3D Game Programming - Episode 18.5 - Creating an EXE File in Java
     jar파일을 EXE파일로 생성하기, Launch4j를 활용함. 
     
-✔ 3D Game Programming - Episode 19 - Rendering Walls
+✅ 3D Game Programming - Episode 19 - Rendering Walls
     rotation에 따라 sreen에 생성한 wall도 자연스러운 방향으로 렌더될 수 있도록 수정. 
 
-✔ 3D Game Programming - Episode 20 - Continuing Walls, Fixing Bugs, and Managing Crashes
+✅ 3D Game Programming - Episode 20 - Continuing Walls, Fixing Bugs, and Managing Crashes
     벽 생성을 하고 나서 벽을 보고 걷게 되면 벽에도 마찬가지로 걷기 효과가 적용된다. 
     그래서 벽이 위아래로 bounce하는 연출이 나온다. 벽 or object 걷기 효과가 적용되면 안되기 떄문에 이와 관련된
     리팩토링을 진행한다. 
     
-✔ 3D Game Programming - Episode 21 - Texturing Walls, Fixing Clipping, and Fixing the Mouse
+✅ 3D Game Programming - Episode 21 - Texturing Walls, Fixing Clipping, and Fixing the Mouse
     생성된 wall에 texture 를 입힌다. 텍스쳐를 하나의 이미지 파일로 간주하고 텍스쳐 하나하나는 해당 이미지에서
     일종의 섹터로 구분해서 읽어들인다. 마인크래프트에서 텍스쳐를 관리하는 방식과 비슷한 방식이다. 
     
-✔ 3D Game Programming - Episode 22 - Random Level Generator + Properly Fixing Clipping
+✅ 3D Game Programming - Episode 22 - Random Level Generator + Properly Fixing Clipping
     랜덤 벽을 생성해서 미로를 연출해본다. 벽이 겹쳐 보이는 Clipping을 해결하기 위한 리팩토링이 진행된다. 
     아직 벽과의 충돌은 구현되지 않아서 벽이 통과되는 버그가 있음. 
 
-✔ 3D Game Programming - Episode 23 - Graphical User Interface(GUI) Launcher
-✔ 3D Game Programming - Episode 24 - Making Our Launcher Work
-✔ 3D Game Programming - Episode 25 - Writing and Reading Files
-✔ 3D Game Programming - Episode 26 - Custom Resolutions
-✔ 3D Game Programming - Episode 27 - Decorating the Launcher
-✔ 3D Game Programming - Episode 28 - Continuing our Custom Launcher!
-✔ 3D Game Programming - Episode 29 - Launching The Game
-✔ 3D Game Programming - Episode 30 - Colour Processing In-Depth
-✔ 3D Game Programming - Episode 31 - Sprites!
-✔ 3D Game Programming - Episode 32 - Sprite Mapping
-✔ 3D Game Programming - Episode 33 - High Resolution Rendering
-✔ 3D Game Programming - Episode 34 - Entities
+✅ 3D Game Programming - Episode 23 - Graphical User Interface(GUI) Launcher
+✅ 3D Game Programming - Episode 24 - Making Our Launcher Work
+✅ 3D Game Programming - Episode 25 - Writing and Reading Files
+✅ 3D Game Programming - Episode 26 - Custom Resolutions
+✅ 3D Game Programming - Episode 27 - Decorating the Launcher
+✅ 3D Game Programming - Episode 28 - Continuing our Custom Launcher!
+✅ 3D Game Programming - Episode 29 - Launching The Game
+✅ 3D Game Programming - Episode 30 - Colour Processing In-Depth
+✅ 3D Game Programming - Episode 31 - Sprites!
+✅ 3D Game Programming - Episode 32 - Sprite Mapping
+✅ 3D Game Programming - Episode 33 - High Resolution Rendering
+✅ 3D Game Programming - Episode 34 - Entities
 ```

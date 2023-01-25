@@ -14,7 +14,7 @@ public class Level {
         for(int y = 0; y < height; y ++){
             for(int x = 0; x < width; x++){
                 Block block = null;
-                if(random.nextInt(4) == 0){
+                if(random.nextInt(10) == 0){ // 이 nextInt의 bound값을 크게 하면 block들이 좀 더 널찍하게 생성됨.
                     block = new SolidBlock();
                 }else{
                     block = new Block();
