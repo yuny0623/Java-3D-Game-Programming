@@ -28,10 +28,15 @@ public class Screen extends Render{
 //            int anim2 = (int) (Math.cos((game.time + i) % 1000.0 / 100) * 100);
 //            // draw(test, (width - 256) / 2 + anim, (height - 256) / 2 + anim2);
 //        }
+
         render.floor(game);
+        render.renderWall(0, 0.5, 1.5,1.5, 0); // 이건 항상 renderDistance 전에 호출해야 한다.
+        render.renderWall(0, 0, 1,1.5, 0); // 이건 항상 renderDistance 전에 호출해야 한다.
+        render.renderWall(0, 0.5, 1,1, 0); // 이건 항상 renderDistance 전에 호출해야 한다.
+        render.renderWall(0.5, 0.5, 1,1.5, 0); // 이건 항상 renderDistance 전에 호출해야 한다.
+
         render.renderDistanceLimiter(); // 먼 곳이 어둡게 만들어줌.
         // render.walls(); // 벽 생성은 render distance 보다 이후에 선언되야만 render distance가 적용되지 않는다.
-        render.renderWall(0, 0.5, 1.5, 0);
         // render.renderWall(0, 0.5, 1.5, 0);
         draw(render, 0, 0);
     }

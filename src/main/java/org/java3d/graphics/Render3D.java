@@ -8,7 +8,7 @@ import java.util.Random;
 public class Render3D extends Render{
     public double[] zBuffer;  // depth buffer for distance gradient
     private double renderDistance = 5000;
-    private double forward, right, up, cosine, sine;
+    private double forward, right, up, cosine, sine, walking;
 
     public Render3D(int width, int height) {
         super(width, height);
@@ -27,18 +27,10 @@ public class Render3D extends Render{
         forward = game.controls.z;
         right = game.controls.x;
         up = game.controls.y; // 점프 구현
-        double walking = Math.sin(game.time / 6.0) * 0.5; // 걷는 효과를 준다. 화면이 살짝 흔들리는 효과
-        if(Controller.crouchWalk){
-            walking = Math.sin(game.time / 6.0) * 0.25; // 앉아있는 상태로 걷는 동안에는 걷는 효과를 살짝 감소시킨다. 즉 화면흔들림을 줄인다.
-        }
-        if(Controller.runWalk){
-            walking = Math.sin(game.time / 6.0) * 0.8; // 뛰는 동안에는 걷기 효과를 좀 더 증가시킨다. 화면이 더 흔들리게 만든다.
-        }
-
+        walking = 0;  // 초기화
         // double rotation = 0;
-        double rotation = Math.sin(game.time / 40.8) * 0.5;
-        // double rotation = game.controls.rotation;
-        // double rotation = game.controls.rotation;
+        // double rotation = Math.sin(game.time / 40.8) * 0.5;
+        double rotation = game.controls.rotation;
 
         cosine = Math.cos(rotation);
         sine = Math.sin(rotation);
@@ -48,8 +40,20 @@ public class Render3D extends Render{
 
             double z = (floorPosition + up) / ceiling; // 점프한 높이만큼 바닥에서 더해주기
             if(Controller.walk){
+                walking = Math.sin(game.time / 6.0) * 0.5; // 걷는 효과를 준다. 화면이 살짝 흔들리는 효과
                 z = (floorPosition + up + walking) / ceiling;
             }
+            if(Controller.crouchWalk && Controller.walk){
+                walking = Math.sin(game.time / 6.0) * 0.25; // 앉아있는 상태로 걷는 동안에는 걷는 효과를 살짝 감소시킨다. 즉 화면흔들림을 줄인다.
+                z = (floorPosition + up + walking) / ceiling;
+            }
+            if(Controller.runWalk && Controller.walk){
+                walking = Math.sin(game.time / 6.0) * 0.8; // 뛰는 동안에는 걷기 효과를 좀 더 증가시킨다. 화면이 더 흔들리게 만든다.
+                z = (floorPosition + up + walking) / ceiling;
+            }
+
+
+
             if (ceiling < 0){
                 z = (ceilingPosition - up) / -ceiling; // 점프한 만큼 천장에서 빼주기
                 if (Controller.walk){
@@ -74,21 +78,27 @@ public class Render3D extends Render{
         }
     }
 
-    public void renderWall(double xLeft, double xRight, double zDistance, double yHeight){
-        double xcLeft = ((xLeft) - right) * 2;
-        double zcLeft = ((zDistance) - forward) * 2;
+    public void renderWall(double xLeft, double xRight, double zDistanceLeft, double zDistanceRight, double yHeight){
+
+        double upCorrect = 0.062;
+        double rightCorrect = 0.062;
+        double forwardCorrect = 0.062;
+        double walkCorrect = -0.062;
+
+        double xcLeft = ((xLeft) - (right * rightCorrect)) * 2;
+        double zcLeft = ((zDistanceLeft) - (forward * forwardCorrect)) * 2;
 
         double rotLeftSideX = xcLeft * cosine - zcLeft * sine;
-        double yCornerTL = ((-yHeight) - up) * 2;
-        double yCornerBL = ((+0.5 - yHeight) - up) * 2;
+        double yCornerTL = ((-yHeight) - (-up * upCorrect+ (walking * walkCorrect))) * 2;
+        double yCornerBL = ((+0.5 - yHeight) - (-up * upCorrect+ (walking* walkCorrect))) * 2;
         double rotLeftSideZ = zcLeft  * cosine + xcLeft * sine;
 
-        double xcRight = ((xRight) - right) * 2;
-        double zcRight = ((zDistance) - forward) * 2;
+        double xcRight = ((xRight) - (right * rightCorrect)) * 2;
+        double zcRight = ((zDistanceRight) - (forward * forwardCorrect)) * 2;
 
         double rotRightSideX = xcRight * cosine - zcRight * sine;
-        double yCornerTR = ((-yHeight) - up) * 2;
-        double yCornerBR = ((+0.5 - yHeight) - up) * 2;
+        double yCornerTR = ((-yHeight) - (-up * upCorrect+ (walking* walkCorrect))) * 2;
+        double yCornerBR = ((+0.5 - yHeight) - (-up * upCorrect+ (walking* walkCorrect))) * 2;
         double rotRightSideZ = zcRight * cosine + xcRight * sine;
 
         double xPixelLeft = (rotLeftSideX / rotLeftSideZ * height + width / 2);
@@ -97,22 +107,32 @@ public class Render3D extends Render{
         if(xPixelLeft >= xPixelRight){
             return;
         }
+
         int xPixelLeftInt = (int) xPixelLeft;
         int xPixelRightInt = (int) xPixelRight;
+
         if (xPixelLeftInt < 0) {
             xPixelLeftInt = 0;
         }
-        if(xPixelRight > width){
+        if(xPixelRightInt > width){
             xPixelRightInt = width;
         }
 
-        double yPixelLeftTop  = (int) (yCornerTL / rotLeftSideZ * height + height / 2);
-        double yPixelLeftBottom = (int) (yCornerBL)  / rotLeftSideZ * height + height / 2;
-        double yPixelRightTop = (int) yCornerTR / rotRightSideZ * height + height / 2;
-        double yPixelRightBottom = (int) yCornerBL / rotRightSideZ * height + height / 2;
+        double yPixelLeftTop  = yCornerTL / rotLeftSideZ * height + height / 2.0;
+        double yPixelLeftBottom = yCornerBL  / rotLeftSideZ * height + height / 2.0;
+        double yPixelRightTop = yCornerTR / rotRightSideZ * height + height / 2.0;
+        double yPixelRightBottom = yCornerBL / rotRightSideZ * height + height / 2.0;
+
+        double tex1 = 1 / rotLeftSideZ;
+        double tex2 = 1 / rotRightSideZ;
+        double tex3 = 0 / rotLeftSideZ;
+        double tex4 = 8 / rotRightSideZ - tex3;
 
         for(int x = xPixelLeftInt; x < xPixelRightInt; x ++){
             double pixelRotation = (x - xPixelLeft) / (xPixelRight - xPixelLeft);
+
+            int xTexture = (int) ((tex3 + tex4 * pixelRotation) / (tex1 + (tex2 - tex1) * pixelRotation));
+
 
             double yPixelTop = yPixelLeftTop + (yPixelRightTop - yPixelLeftTop) * pixelRotation;
             double yPixelBottom = yPixelLeftBottom  + (yPixelRightBottom - yPixelLeftBottom) * pixelRotation;
@@ -123,22 +143,18 @@ public class Render3D extends Render{
             if(yPixelTopInt < 0){
                 yPixelTopInt = 0;
             }
-            if(yPixelTopInt > height){
-                yPixelTopInt = height;
+            if(yPixelBottomInt > height){
+                yPixelBottomInt = height;
             }
 
             for(int y = yPixelTopInt; y < yPixelBottomInt; y++){
-                try {
-                    pixels[x + y * width] = 0xfffff;
-                }catch(ArrayIndexOutOfBoundsException e){
-                    e.printStackTrace();
-                    continue;
-                }
-                zBuffer[x + y * width] = 0;
+                double pixelRotationY = (y - yPixelTop) / (yPixelBottom - yPixelTop);
+                int yTexture = (int) (8 * pixelRotationY);
+                pixels[x + y * width] = xTexture * 100 + yTexture * 100 * 256;
+                zBuffer[x + y * width] = 1/ (tex1 + (tex2 - tex1) * pixelRotation) * 8;
             }
         }
     }
-
 
     public void renderDistanceLimiter(){
         for(int i = 0; i < width * height; i++){

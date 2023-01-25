@@ -177,6 +177,7 @@
     rotation에 따라 sreen에 생성한 wall도 자연스러운 방향으로 렌더될 수 있도록 수정. 
 
 ✔ 3D Game Programming - Episode 20 - Continuing Walls, Fixing Bugs, and Managing Crashes
+    
 ✔ 3D Game Programming - Episode 21 - Texturing Walls, Fixing Clipping, and Fixing the Mouse
 ✔ 3D Game Programming - Episode 22 - Random Level Generator + Properly Fixing Clipping
 ✔ 3D Game Programming - Episode 23 - Graphical User Interface(GUI) Launcher
