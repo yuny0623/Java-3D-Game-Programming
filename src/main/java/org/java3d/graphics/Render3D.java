@@ -86,7 +86,8 @@ public class Render3D extends Render{
         }
 
         Level level = game.level;
-        int size = 20;
+        int size = 50;
+        // 1단 벽
         for(int xBlock = -size; xBlock <= size; xBlock++){
             for(int zBlock = -size; zBlock <= size; zBlock++){
                 Block block = level.create(xBlock, zBlock);
@@ -111,6 +112,7 @@ public class Render3D extends Render{
             }
         }
 
+        // 2단 벽
         for(int xBlock = -size; xBlock <= size; xBlock++){
             for(int zBlock = -size; zBlock <= size; zBlock++){
                 Block block = level.create(xBlock, zBlock);

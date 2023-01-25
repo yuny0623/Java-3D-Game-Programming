@@ -186,7 +186,8 @@
     일종의 섹터로 구분해서 읽어들인다. 마인크래프트에서 텍스쳐를 관리하는 방식과 비슷한 방식이다. 
     
 ✔ 3D Game Programming - Episode 22 - Random Level Generator + Properly Fixing Clipping
-    
+    랜덤 벽을 생성해서 미로를 연출해본다. 벽이 겹쳐 보이는 Clipping을 해결하기 위한 리팩토링이 진행된다. 
+    아직 벽과의 충돌은 구현되지 않아서 벽이 통과되는 버그가 있음. 
 
 ✔ 3D Game Programming - Episode 23 - Graphical User Interface(GUI) Launcher
 ✔ 3D Game Programming - Episode 24 - Making Our Launcher Work
