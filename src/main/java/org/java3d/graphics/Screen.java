@@ -29,7 +29,8 @@ public class Screen extends Render{
 //            // draw(test, (width - 256) / 2 + anim, (height - 256) / 2 + anim2);
 //        }
         render.floor(game);
-        render.renderDistanceLimiter();
+        render.renderDistanceLimiter(); // 먼 곳이 어둡게 만들어줌.
+        render.walls(); // 벽 생성은 render distance 보다 이후에 선언되야만 render distance가 적용되지 않는다.
         draw(render, 0, 0);
     }
 }

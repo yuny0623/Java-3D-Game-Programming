@@ -8,6 +8,7 @@ import java.util.Random;
 public class Render3D extends Render{
     public double[] zBuffer;  // depth buffer for distance gradient
     private double renderDistance = 5000;
+    private double forwardGlobal;
 
     public Render3D(int width, int height) {
         super(width, height);
@@ -24,6 +25,7 @@ public class Render3D extends Render{
         // double ceilingPosition = 800; // 이 값을 800 정도로 하면 천장이 사라지는데 그러면 sky 연출을 할 수 있다.
 
         double forward = game.time% 100.0 / 20.0;
+        forwardGlobal = forward;
         double right = game.controls.x;
         double up = game.controls.y; // 점프 구현
         double walking = Math.sin(game.time / 6.0) * 0.5; // 걷는 효과를 준다. 화면이 살짝 흔들리는 효과
@@ -68,13 +70,16 @@ public class Render3D extends Render{
                 }
             }
         }
+    }
+
+    public void walls(){
 
         Random random = new Random(100);
         // 첫번쨰 벽 생성
         for(int i = 0; i < 20000; i++) {
             double xx = random.nextDouble(); // horizontal
             double yy = random.nextDouble(); // vertical
-            double zz = 1.5  - forward / 16; // depth
+            double zz = 1.5  - forwardGlobal / 16; // depth
 
             int xPixel = (int) (xx / zz * height / 2 + width / 2);
             int yPixel = (int) (yy / zz * height / 2 + height / 2);
@@ -85,7 +90,7 @@ public class Render3D extends Render{
         for(int i = 0; i < 20000; i++) {
             double xx = random.nextDouble() - 1; // horizontal
             double yy = random.nextDouble(); // vertical
-            double zz = 1.5  - forward / 16; // depth
+            double zz = 1.5  - forwardGlobal / 16; // depth
 
             int xPixel = (int) (xx / zz * height / 2 + width / 2);
             int yPixel = (int) (yy / zz * height / 2 + height / 2);
@@ -96,7 +101,7 @@ public class Render3D extends Render{
         for(int i = 0; i < 20000; i++) {
             double xx = random.nextDouble() - 1; // horizontal
             double yy = random.nextDouble() - 1; // vertical
-            double zz = 1.5  - forward / 16; // depth
+            double zz = 1.5  - forwardGlobal / 16; // depth
 
             int xPixel = (int) (xx / zz * height / 2 + width / 2);
             int yPixel = (int) (yy / zz * height / 2 + height / 2);
@@ -107,7 +112,7 @@ public class Render3D extends Render{
         for(int i = 0; i < 20000; i++) {
             double xx = random.nextDouble(); // horizontal
             double yy = random.nextDouble() - 1; // vertical
-            double zz = 1.5  - forward / 16; // depth
+            double zz = 1.5  - forwardGlobal / 16; // depth
 
             int xPixel = (int) (xx / zz * height / 2 + width / 2);
             int yPixel = (int) (yy / zz * height / 2 + height / 2);
@@ -120,7 +125,7 @@ public class Render3D extends Render{
         for(int i = 0; i < 20000; i++) {
             double xx = random.nextDouble(); // horizontal
             double yy = random.nextDouble(); // vertical
-            double zz = 2  - forward / 16; // depth
+            double zz = 2  - forwardGlobal / 16; // depth
 
             int xPixel = (int) (xx / zz * height / 2 + width / 2);
             int yPixel = (int) (yy / zz * height / 2 + height / 2);
@@ -131,7 +136,7 @@ public class Render3D extends Render{
         for(int i = 0; i < 20000; i++) {
             double xx = random.nextDouble() - 1; // horizontal
             double yy = random.nextDouble(); // vertical
-            double zz = 2  - forward / 16; // depth
+            double zz = 2  - forwardGlobal / 16; // depth
 
             int xPixel = (int) (xx / zz * height / 2 + width / 2);
             int yPixel = (int) (yy / zz * height / 2 + height / 2);
@@ -142,7 +147,7 @@ public class Render3D extends Render{
         for(int i = 0; i < 20000; i++) {
             double xx = random.nextDouble() - 1; // horizontal
             double yy = random.nextDouble() - 1; // vertical
-            double zz = 2  - forward / 16; // depth
+            double zz = 2  - forwardGlobal / 16; // depth
 
             int xPixel = (int) (xx / zz * height / 2 + width / 2);
             int yPixel = (int) (yy / zz * height / 2 + height / 2);
@@ -153,7 +158,7 @@ public class Render3D extends Render{
         for(int i = 0; i < 20000; i++) {
             double xx = random.nextDouble(); // horizontal
             double yy = random.nextDouble() - 1; // vertical
-            double zz = 2  - forward / 16; // depth
+            double zz = 2  - forwardGlobal / 16; // depth
 
             int xPixel = (int) (xx / zz * height / 2 + width / 2);
             int yPixel = (int) (yy / zz * height / 2 + height / 2);
@@ -162,7 +167,6 @@ public class Render3D extends Render{
             }
         }
     }
-
     public void renderDistanceLimiter(){
         for(int i = 0; i < width * height; i++){
             int colour = pixels[i];
