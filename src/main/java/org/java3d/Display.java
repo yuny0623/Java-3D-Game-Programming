@@ -37,7 +37,7 @@ public class Display extends Canvas implements Runnable{
         setMaximumSize(size);
         screen = new Screen(WIDTH, HEIGHT);
         game = new Game();
-        img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB); // RGB로 세팅
+        img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);   // RGB로 세팅
         pixels = ((DataBufferInt) img.getRaster().getDataBuffer()).getData(); // 버퍼를 통해 변환
 
         input = new InputHandler();
@@ -149,24 +149,6 @@ public class Display extends Canvas implements Runnable{
     }
 
     public static void main(String[] args) {
-        // create new cursor for game play
-        BufferedImage cursor = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB); // 투명한 마우스 커서를 만든다. TYPE_INT_RGB를 사용하면 검은색 커서가 나옴)
-        Cursor blank = Toolkit.getDefaultToolkit().createCustomCursor(cursor, new Point(0, 0), "blank");
-
-        Display game = new Display();
-        JFrame frame = new JFrame();
-
-        frame.add(game);
-        // frame.pack(); // border 에러 때문에 pack()은 setResizable 이후에 와야함.
-        // frame.getContentPane().setCursor(blank); // custom했던 마우스 커서 적용
-        frame.setTitle(TITLE);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
-        frame.pack();
-        frame.setVisible(true);
-
-        System.out.println("Running...");
-        game.start();
+        new Launcher();
     }
 }
