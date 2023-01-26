@@ -22,7 +22,7 @@ public class Options extends Launcher{
     int h = 0;
 
     public Options(){
-        super(1);
+        super(1, new Display());
         setTitle("Options - Java3D Launcher");
         setSize(new Dimension(width, height));
         setLocationRelativeTo(null);
@@ -64,7 +64,7 @@ public class Options extends Launcher{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new Launcher(0);
+                new Launcher(0, new Display());
                 config.saveConfiguration("width", parseWidth());
                 config.saveConfiguration("height", parseHeight());
             }

@@ -1,6 +1,7 @@
 package org.java3d.gui;
 
 import org.java3d.Configuration;
+import org.java3d.Display;
 import org.java3d.RunGame;
 
 import javax.swing.*;
@@ -14,22 +15,25 @@ public class Launcher extends JFrame {
     private JButton play, options, help, quit;
     private Rectangle rplay, roptions, rhelp, rquit;
     Configuration config = new Configuration();
-    private int width = 240;
-    private int height = 320;
+    private int width = 800;
+    private int height = 400;
     protected int button_width = 80;
     protected int button_height = 40;
 
-    public Launcher(int id){
+    public Launcher(int id, Display display){
         try{
             // 현재 윈도우 상의 UI 모습을 연출할 수 있음.
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }catch (Exception e){
             e.printStackTrace();
         }
+        setUndecorated(true); // swing에서 제공되는 border테두리 등 기본 UI를 없앤다. // 테두리가 사라진다고 보면 된다.
+
         setTitle("Java3D Launcher");
         setSize(new Dimension(width, height));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        getContentPane().add(window); // add the panel
+        // getContentPane().add(window); // add the panel
+        add(display);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
@@ -37,6 +41,7 @@ public class Launcher extends JFrame {
         if(id == 0){
             drawButtons();
         }
+        display.start();
         repaint(); // bug fix: button에 마우스를 올려야 보이는 버그를 해결할 수 있음.
     }
 

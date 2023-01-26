@@ -5,10 +5,13 @@ import org.java3d.gui.Launcher;
 import org.java3d.input.Controller;
 import org.java3d.input.InputHandler;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class Display extends Canvas implements Runnable{
     private static final Long serialVersionUID = 1L;
@@ -110,13 +113,13 @@ public class Display extends Canvas implements Runnable{
                     previousTime += 1000;
                     frames = 0;
                 }
+                if(ticked){
+                    // render();
+                    renderMenu();
+                    frames++;
+                }
+                // render();
             }
-            if(ticked){
-                render();
-                frames++;
-            }
-            render();
-            frames++;
 
             newX = InputHandler.MouseX;
             if(newX > oldX){
@@ -137,6 +140,27 @@ public class Display extends Canvas implements Runnable{
     // handle time. frame extra...
     private void tick(){
         game.tick(input.key);
+    }
+
+    private void renderMenu(){
+        BufferStrategy bs = this.getBufferStrategy();
+        if(bs == null){
+            createBufferStrategy(3); // because we work in 3 dimension
+            return;
+        }
+        Graphics g = bs.getDrawGraphics();
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, 800, 400);
+        try {
+            g.drawImage(ImageIO.read(new FileInputStream("res/textures/menu.png")), 0, 0, 800, 400, null);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Verdana", 0, 20));
+        g.drawString("Play", 700, 90);
+        g.dispose();
+        bs.show();
     }
 
     // rendering
@@ -163,6 +187,7 @@ public class Display extends Canvas implements Runnable{
     }
 
     public static void main(String[] args) {
-        new Launcher(0);
+        Display display = new Display();
+        new Launcher(0, display);
     }
 }
