@@ -1,10 +1,10 @@
 package org.java3d;
 
 import org.java3d.graphics.Screen;
+import org.java3d.gui.Launcher;
 import org.java3d.input.Controller;
 import org.java3d.input.InputHandler;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -12,8 +12,10 @@ import java.awt.image.DataBufferInt;
 
 public class Display extends Canvas implements Runnable{
     private static final Long serialVersionUID = 1L;
-    public static final int WIDTH = 800;
-    public static final int HEIGHT = 600;
+
+    public static int width = 800;
+    public static int height = 600;
+
     public static final String TITLE = "java3d 0.02";
 
     private Thread thread;
@@ -30,14 +32,16 @@ public class Display extends Canvas implements Runnable{
     private int fps;       // 프레임률
     public static int MouseSpeed;
 
+    public static int selection = 0;
+
     public Display(){
-        Dimension size = new Dimension(WIDTH, HEIGHT);
+        Dimension size = new Dimension(getGameWidth(), getGameHeight());
         setPreferredSize(size);
         setMinimumSize(size);
         setMaximumSize(size);
-        screen = new Screen(WIDTH, HEIGHT);
+        screen = new Screen(getGameWidth(), getGameHeight());
         game = new Game();
-        img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);   // RGB로 세팅
+        img = new BufferedImage(getGameWidth(), getGameHeight(), BufferedImage.TYPE_INT_RGB);   // RGB로 세팅
         pixels = ((DataBufferInt) img.getRaster().getDataBuffer()).getData(); // 버퍼를 통해 변환
 
         input = new InputHandler();
@@ -46,6 +50,34 @@ public class Display extends Canvas implements Runnable{
         addMouseListener(input);
         addMouseMotionListener(input);
     }
+
+    public static int getGameWidth(){
+        if(selection == 0){
+            width = 640;
+        }
+        if(selection == 1|| selection == -1){
+            width = 800;
+        }
+        if(selection == 2){
+            width = 1024;
+        }
+        return width;
+    }
+
+    public static int getGameHeight(){
+        if(selection == 0){
+            height = 480;
+        }
+        if(selection == 1|| selection == -1){
+            height = 600;
+        }
+        if(selection == 2){
+            height = 768;
+        }
+        return height;
+    }
+
+
 
     public synchronized void start(){
         if(running) {
@@ -135,12 +167,12 @@ public class Display extends Canvas implements Runnable{
 
         screen.render(game);
 
-        for(int i = 0; i < WIDTH * HEIGHT; i++){
+        for(int i = 0; i < getGameWidth() * getGameHeight(); i++){
             pixels[i] = screen.pixels[i];
         }
 
         Graphics g = bs.getDrawGraphics();
-        g.drawImage(img, 0, 0, WIDTH, HEIGHT, null);
+        g.drawImage(img, 0, 0, getGameWidth(), getGameHeight(), null);
         g.setFont(new Font("Verdana", 2, 40)); // style은 글자체를 의미한다. bold나 italic등등
         g.setColor(Color.WHITE); // 폰트의 색을 저장한다.
         g.drawString(fps + " FPS", 15, 50); // 글자를 그린다.
@@ -149,6 +181,6 @@ public class Display extends Canvas implements Runnable{
     }
 
     public static void main(String[] args) {
-        new Launcher();
+        new Launcher(0);
     }
 }

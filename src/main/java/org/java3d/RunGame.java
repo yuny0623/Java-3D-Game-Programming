@@ -12,10 +12,10 @@ public class RunGame {
 
         Display game = new Display();
         JFrame frame = new JFrame();
-
         frame.add(game);
         // frame.pack(); // border 에러 때문에 pack()은 setResizable 이후에 와야함.
         // frame.getContentPane().setCursor(blank); // custom했던 마우스 커서 적용
+
         frame.setTitle(Display.TITLE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);

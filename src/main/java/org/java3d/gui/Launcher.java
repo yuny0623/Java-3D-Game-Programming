@@ -1,19 +1,23 @@
-package org.java3d;
+package org.java3d.gui;
+
+import org.java3d.RunGame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Launcher extends JFrame {
     private static final long serialVersionUID = 1L;
-    private JPanel window = new JPanel();
+    protected JPanel window = new JPanel();
     private JButton play, options, help, quit;
     private Rectangle rplay, roptions, rhelp, rquit;
     private int width = 240;
     private int height = 320;
-    private int button_width = 80;
-    private int button_height = 40;
+    protected int button_width = 80;
+    protected int button_height = 40;
 
-    public Launcher(){
+    public Launcher(int id){
         try{
             // 현재 윈도우 상의 UI 모습을 연출할 수 있음.
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -28,7 +32,9 @@ public class Launcher extends JFrame {
         setResizable(false);
         setVisible(true);
         window.setLayout(null);
-        drawButtons();
+        if(id == 0){
+            drawButtons();
+        }
     }
 
     private void drawButtons(){
@@ -51,5 +57,32 @@ public class Launcher extends JFrame {
         rquit = new Rectangle(width/2 - (button_width/2), 240, button_width, button_height);
         quit.setBounds(rquit);
         window.add(quit);
+
+        play.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new RunGame();
+            }
+        });
+        options.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new Options();
+            }
+        });
+        help.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        quit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0); // normal exit
+            }
+        });
     }
 }

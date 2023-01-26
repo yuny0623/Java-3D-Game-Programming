@@ -191,7 +191,11 @@
     아직 벽과의 충돌은 구현되지 않아서 벽이 통과되는 버그가 있음. 
 
 ✅ 3D Game Programming - Episode 23 - Graphical User Interface(GUI) Launcher
+    Launcher를 만들어본다. 스크린 사이즈를 조정하고 간단한 play 준비 화면을 제공한다. 
+    기본적인 GUI프로그래밍과 관련된 내용임. 
+    
 ✅ 3D Game Programming - Episode 24 - Making Our Launcher Work
+    
 ✅ 3D Game Programming - Episode 25 - Writing and Reading Files
 ✅ 3D Game Programming - Episode 26 - Custom Resolutions
 ✅ 3D Game Programming - Episode 27 - Decorating the Launcher
