@@ -50,7 +50,7 @@ public class InputHandler implements KeyListener, FocusListener, MouseListener, 
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        // dragged = true;
     }
 
     @Override
@@ -58,13 +58,13 @@ public class InputHandler implements KeyListener, FocusListener, MouseListener, 
         MouseButton = e.getButton();
         MousePX = e.getX();
         MousePY = e.getY();
-        // dragged = true;
+        dragged = true;
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        MouseButton = 0;
         dragged = false;
+        MouseButton = 0;
     }
 
     @Override

@@ -61,9 +61,8 @@ public class Launcher extends Canvas implements Runnable{
 
     public void updateFrame(){
         if(InputHandler.dragged){
-            Point p = getLocation();
-            System.out.println("x: " +  p.x + ", y: " + p.y);
-            setLocation(p.x + InputHandler.MouseDX - InputHandler.MousePX, p.y + InputHandler.MouseDY - InputHandler.MousePY);
+            Point p = frame.getLocation();
+            frame.setLocation(p.x + InputHandler.MouseDX - InputHandler.MousePX, p.y + InputHandler.MouseDY - InputHandler.MousePY);
         }
     }
 
@@ -137,10 +136,11 @@ public class Launcher extends Canvas implements Runnable{
         while(running){
             try {
                 renderMenu();
-                updateFrame();
             }catch(IllegalStateException e){
                 System.out.println("Handled.");
+                e.printStackTrace();
             }
+            updateFrame();
         }
     }
 

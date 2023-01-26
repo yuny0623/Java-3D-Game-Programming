@@ -44,8 +44,8 @@ public class Display extends Canvas implements Runnable{
         game = new Game();
         img = new BufferedImage(getGameWidth(), getGameHeight(), BufferedImage.TYPE_INT_RGB);   // RGB로 세팅
         pixels = ((DataBufferInt) img.getRaster().getDataBuffer()).getData(); // 버퍼를 통해 변환
-
         input = new InputHandler();
+
         addKeyListener(input);
         addFocusListener(input);
         addMouseListener(input);
@@ -98,6 +98,7 @@ public class Display extends Canvas implements Runnable{
         int tickCount = 0;
         boolean ticked = false;
         requestFocus(); // 마우스를 클릭하지 않고도 게임 창에 이미 진입하게 해줌. 미리 Focus를 맞춰줌.
+
         while(running){
             // fps counter
             long currentTime = System.nanoTime();
