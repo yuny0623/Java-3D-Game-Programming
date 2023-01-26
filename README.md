@@ -195,9 +195,14 @@
     기본적인 GUI프로그래밍과 관련된 내용임. 
     
 ✅ 3D Game Programming - Episode 24 - Making Our Launcher Work
+    전편에 이어지는 기본적인 GUI프로그래밍과 관련된 내용. 
     
 ✅ 3D Game Programming - Episode 25 - Writing and Reading Files
+    resolution 정보 즉 화면 크기 정보를 파일로 저장하고 쓰고 읽을 수 있게 구현함. 
+    이전 설정 정보를 XML파일에 저장한다. Properties를 활용한다. file IO 기능을 활용한다. 
+
 ✅ 3D Game Programming - Episode 26 - Custom Resolutions
+    
 ✅ 3D Game Programming - Episode 27 - Decorating the Launcher
 ✅ 3D Game Programming - Episode 28 - Continuing our Custom Launcher!
 ✅ 3D Game Programming - Episode 29 - Launching The Game

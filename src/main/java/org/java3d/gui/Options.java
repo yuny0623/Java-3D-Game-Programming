@@ -41,7 +41,25 @@ public class Options extends Launcher{
         OK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Display.selection = resolution.getSelectedIndex(); // 선택된 index를 get
+                int selection = resolution.getSelectedIndex(); // 선택된 index를 get
+                int w = 0;
+                int h = 0;
+                if(selection == 0){
+                    w = 640;
+                    h = 480;
+                }
+                if(selection == 1 || selection == -1){ // getSelectedIndex returns -1 if nothing is selected
+                    w = 800;
+                    h = 600;
+                }
+                if(selection == 2){
+                    w = 1024;
+                    h = 768;
+                }
+
+                config.saveConfiguration("width", w);
+                config.saveConfiguration("height", h);
+
                 dispose();
                 new Launcher(0);
             }

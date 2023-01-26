@@ -1,5 +1,6 @@
 package org.java3d.gui;
 
+import org.java3d.Configuration;
 import org.java3d.RunGame;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ public class Launcher extends JFrame {
     protected JPanel window = new JPanel();
     private JButton play, options, help, quit;
     private Rectangle rplay, roptions, rhelp, rquit;
+    Configuration config = new Configuration();
     private int width = 240;
     private int height = 320;
     protected int button_width = 80;
@@ -35,6 +37,7 @@ public class Launcher extends JFrame {
         if(id == 0){
             drawButtons();
         }
+        repaint(); // bug fix: button에 마우스를 올려야 보이는 버그를 해결할 수 있음.
     }
 
     private void drawButtons(){
@@ -61,6 +64,7 @@ public class Launcher extends JFrame {
         play.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                config.loadConfiguration("res/settings/config.xml");
                 dispose();
                 new RunGame();
             }
