@@ -22,6 +22,12 @@ public class RunGame {
         frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
+
         game.start();
+        stopMenuThread();
+    }
+
+    private void stopMenuThread(){
+        Display.getLauncherInstance().stopMenu();
     }
 }

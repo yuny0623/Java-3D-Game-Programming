@@ -5,13 +5,10 @@ import org.java3d.gui.Launcher;
 import org.java3d.input.Controller;
 import org.java3d.input.InputHandler;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.io.FileInputStream;
-import java.io.IOException;
 
 public class Display extends Canvas implements Runnable{
     private static final Long serialVersionUID = 1L;
@@ -36,6 +33,7 @@ public class Display extends Canvas implements Runnable{
     public static int MouseSpeed;
 
     public static int selection = 0;
+    static Launcher launcher;
 
     public Display(){
         Dimension size = new Dimension(getGameWidth(), getGameHeight());
@@ -52,6 +50,13 @@ public class Display extends Canvas implements Runnable{
         addFocusListener(input);
         addMouseListener(input);
         addMouseMotionListener(input);
+    }
+
+    public static Launcher getLauncherInstance(){
+        if(launcher == null){
+            launcher = new Launcher(0);
+        }
+        return launcher;
     }
 
     public static int getGameWidth(){
@@ -112,32 +117,33 @@ public class Display extends Canvas implements Runnable{
                     frames = 0;
                 }
                 if(ticked){
-                    // render();
+                    render();
                     // renderMenu();
                     frames++;
                 }
                 // render();
             }
 
-            newX = InputHandler.MouseX;
-            if(newX > oldX){
-                Controller.turnRight = true;
-            }
-            if(newX < oldX) {
-                Controller.turnLeft = true;
-            }
-            if(newX == oldX){
-                Controller.turnLeft = false;
-                Controller.turnRight = false;
-            }
-            MouseSpeed = Math.abs(newX - oldX);
-            oldX = newX;
         }
     }
 
     // handle time. frame extra...
-    private void tick(){
+    private void tick(){ // what tick method does updates our game.
         game.tick(input.key);
+
+        newX = InputHandler.MouseX;
+        if(newX > oldX){
+            Controller.turnRight = true;
+        }
+        if(newX < oldX) {
+            Controller.turnLeft = true;
+        }
+        if(newX == oldX){
+            Controller.turnLeft = false;
+            Controller.turnRight = false;
+        }
+        MouseSpeed = Math.abs(newX - oldX);
+        oldX = newX;
     }
 
 
@@ -165,7 +171,6 @@ public class Display extends Canvas implements Runnable{
     }
 
     public static void main(String[] args) {
-        Display display = new Display();
-        new Launcher(0, display);
+        getLauncherInstance();
     }
 }

@@ -1,5 +1,6 @@
 package org.java3d.gui;
 
+import org.java3d.Configuration;
 import org.java3d.Display;
 
 import javax.swing.*;
@@ -7,27 +8,34 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Options extends Launcher{
+public class Options extends JFrame{
     private static final long serialVersionUID = 1L;
     private Choice resolution = new Choice();
     private int width = 550;
     private int height = 450;
     private JButton OK;
     private Rectangle rOK, rresolution;
+    Configuration config = new Configuration();
 
     private JTextField twidth, theight;
     private JLabel lwidth, lheight;
 
     int w = 0;
     int h = 0;
-
+    private int button_width = 80;
+    private int button_height = 40;
+    JPanel window = new JPanel();
     public Options(){
-        super(1, new Display());
         setTitle("Options - Java3D Launcher");
         setSize(new Dimension(width, height));
+        add(window);
         setLocationRelativeTo(null);
+        setResizable(false);
+        setVisible(true);
+        window.setLayout(null);
 
         drawButtons();
+        window.repaint();
     }
 
     private void drawButtons(){
@@ -64,7 +72,7 @@ public class Options extends Launcher{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new Launcher(0, new Display());
+                new Launcher(0);
                 config.saveConfiguration("width", parseWidth());
                 config.saveConfiguration("height", parseHeight());
             }

@@ -1,5 +1,4 @@
-# 🎮 [Computer Graphics Study] 3D Game Programming via Java 
-### 자바를 활용한 3D Game Programming
+# 🎮 [Graphics Study] 3D Game Programming with Java
 
 ## 📅 Date 
 ```
@@ -18,7 +17,7 @@
 ## ❓ Why
 ```
     학부 강좌에 그래픽스 강좌가 없어서 강의를 따라하며 간략한 게임을 만들어보고 
-    3D 프로그래밍에 대한 대략적인 개념을 잡아보도록 한다. 
+    3D 프로그래밍에 대한 기초적인 개념을 파악한다. 
 ```
 
 ## 🥅 Study Goal 
@@ -30,8 +29,8 @@
 
 ## ✒ How to study 
 ```
-    1️⃣  강의를 듣고 예제를 구현하고 Custom하도록 한다. 
-    2️⃣  주차별 강의에 대한 스터디 내용 정리와 후기를 남길 수 있도록 한다. 
+    1️⃣  강의를 듣고 예제를 구현한다. 
+    2️⃣  주차별 강의에 대한 스터디 내용 정리와 후기를 남긴다. 
 ```
 
 ## Study Result
@@ -209,8 +208,15 @@
     이 과정에서 문제가 발생. 리팩토링 및 수정은 다음 에피소드에서 진행됨. 
     
 ✅ 3D Game Programming - Episode 28 - Continuing our Custom Launcher!
+    Launcher에서 이미지를 사용해서 메뉴를 구성한다. 또한 런쳐가 드래그될 수 있도록 커스텀한다. 
+    
 ✅ 3D Game Programming - Episode 29 - Launching The Game
+    싱글톤 패턴을 Launcher에 적용한다. Display의 getInstance를 통해 항상 같은 Launcher를 받아올 수 있다. 
+    추가적인 리팩토링이 진행됨. 
+
 ✅ 3D Game Programming - Episode 30 - Colour Processing In-Depth
+    
+
 ✅ 3D Game Programming - Episode 31 - Sprites!
 ✅ 3D Game Programming - Episode 32 - Sprite Mapping
 ✅ 3D Game Programming - Episode 33 - High Resolution Rendering
