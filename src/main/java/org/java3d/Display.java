@@ -19,7 +19,7 @@ public class Display extends Canvas implements Runnable{
     public static int width = 800;
     public static int height = 600;
 
-    public static final String TITLE = "java3d 0.02";
+    public static final String TITLE = "Java3D 0.02";
 
     private Thread thread;
     private boolean running = false;
@@ -69,7 +69,7 @@ public class Display extends Canvas implements Runnable{
             return;
         }
         running = true;
-        thread = new Thread(this);
+        thread = new Thread(this, "game");
         thread.start();
     }
 
@@ -92,16 +92,14 @@ public class Display extends Canvas implements Runnable{
         double secondsPerTick = 1 / 60.0;
         int tickCount = 0;
         boolean ticked = false;
-
+        requestFocus(); // 마우스를 클릭하지 않고도 게임 창에 이미 진입하게 해줌. 미리 Focus를 맞춰줌.
         while(running){
             // fps counter
             long currentTime = System.nanoTime();
             long passedTime = currentTime - previousTime;
             previousTime = currentTime;
             unprocessedSeconds += passedTime / 1000000000.0;
-
-            requestFocus(); // 마우스를 클릭하지 않고도 게임 창에 이미 진입하게 해줌. 미리 Focus를 맞춰줌.
-
+            // launcher.updateFrame();
             while(unprocessedSeconds > secondsPerTick){
                 tick();
                 unprocessedSeconds -= secondsPerTick;
@@ -115,7 +113,7 @@ public class Display extends Canvas implements Runnable{
                 }
                 if(ticked){
                     // render();
-                    renderMenu();
+                    // renderMenu();
                     frames++;
                 }
                 // render();
@@ -142,26 +140,6 @@ public class Display extends Canvas implements Runnable{
         game.tick(input.key);
     }
 
-    private void renderMenu(){
-        BufferStrategy bs = this.getBufferStrategy();
-        if(bs == null){
-            createBufferStrategy(3); // because we work in 3 dimension
-            return;
-        }
-        Graphics g = bs.getDrawGraphics();
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, 800, 400);
-        try {
-            g.drawImage(ImageIO.read(new FileInputStream("res/textures/menu.png")), 0, 0, 800, 400, null);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Verdana", 0, 20));
-        g.drawString("Play", 700, 90);
-        g.dispose();
-        bs.show();
-    }
 
     // rendering
     private void render(){

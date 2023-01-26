@@ -205,7 +205,8 @@
     Resolution을 직접 설정할 수 있도록 JTextField를 활용함. 
     
 ✅ 3D Game Programming - Episode 27 - Decorating the Launcher
-    ㅇ 
+    GUI Launcher에 Background 이미지를 삽입한다. 다만 정적인 이미지가 아닌 graphics를 활용해서 삽입한다. 
+    이 과정에서 문제가 발생. 리팩토링 및 수정은 다음 에피소드에서 진행됨. 
     
 ✅ 3D Game Programming - Episode 28 - Continuing our Custom Launcher!
 ✅ 3D Game Programming - Episode 29 - Launching The Game
