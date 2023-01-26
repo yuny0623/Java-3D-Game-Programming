@@ -209,13 +209,21 @@
     
 ✅ 3D Game Programming - Episode 28 - Continuing our Custom Launcher!
     Launcher에서 이미지를 사용해서 메뉴를 구성한다. 또한 런쳐가 드래그될 수 있도록 커스텀한다. 
+    반투명 이미지 생성 링크: https://pixlr.com/kr/remove-background/ 
     
 ✅ 3D Game Programming - Episode 29 - Launching The Game
     싱글톤 패턴을 Launcher에 적용한다. Display의 getInstance를 통해 항상 같은 Launcher를 받아올 수 있다. 
     추가적인 리팩토링이 진행됨. 
+    
+    이슈: 
+    런쳐를 드래그해서 이동하는 movement가 깨지는 현상이 있었음. 
+    
+    해결방법: 
+    updateFrame의 getLocation을 반드시 Jframe에서 호출해야 한다. 
+    Canvas에서 호출할 경우 Canvas의 getLocation을 호출하기 때문에 드래그가 깨지게 됨. 
 
 ✅ 3D Game Programming - Episode 30 - Colour Processing In-Depth
-    
+    새로운 프로젝트 진행. 
 
 ✅ 3D Game Programming - Episode 31 - Sprites!
 ✅ 3D Game Programming - Episode 32 - Sprite Mapping
