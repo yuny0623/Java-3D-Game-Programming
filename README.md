@@ -202,8 +202,11 @@
     이전 설정 정보를 XML파일에 저장한다. Properties를 활용한다. file IO 기능을 활용한다. 
 
 ✅ 3D Game Programming - Episode 26 - Custom Resolutions
+    Resolution을 직접 설정할 수 있도록 JTextField를 활용함. 
     
 ✅ 3D Game Programming - Episode 27 - Decorating the Launcher
+    ㅇ 
+    
 ✅ 3D Game Programming - Episode 28 - Continuing our Custom Launcher!
 ✅ 3D Game Programming - Episode 29 - Launching The Game
 ✅ 3D Game Programming - Episode 30 - Colour Processing In-Depth
