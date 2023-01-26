@@ -11,9 +11,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 public class Launcher extends JFrame implements Runnable{
     private static final long serialVersionUID = 1L;
@@ -150,12 +150,46 @@ public class Launcher extends JFrame implements Runnable{
         g.fillRect(0, 0, 800, 400);
         try {
             g.drawImage(ImageIO.read(new FileInputStream("res/textures/menu.png")), 0, 0, 800, 400, null);
+            if(InputHandler.MouseX > 690 && InputHandler.MouseX < 690 + 80 && InputHandler.MouseY > 130 && InputHandler.MouseY < 130 + 30) {
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/play_on.png")), 690, 130, 80, 30, null);
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/arrow2.png")), 690 + 80, 134, 22, 20, null);
+                if(InputHandler.MouseButton == 1){
+                    System.out.println("Play!");
+                }
+            }else{
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/play.png")), 690, 130, 80, 30, null);
+            }
+            if(InputHandler.MouseX > 690 && InputHandler.MouseX < 690 + 80 && InputHandler.MouseY > 170 && InputHandler.MouseY < 170 + 30) {
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/options_on.png")), 690, 170, 80, 30, null);
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/arrow2.png")), 690 + 80, 174, 22, 20, null);
+                if(InputHandler.MouseButton == 1){
+                    System.out.println("Options!");
+
+                }
+            }else{
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/options.png")), 690, 170, 80, 30, null);
+            }
+            if(InputHandler.MouseX > 690 && InputHandler.MouseX < 690 + 80 && InputHandler.MouseY > 210 && InputHandler.MouseY < 210 + 30) {
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/help_on.png")), 690, 210, 80, 30, null);
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/arrow2.png")), 690 + 80, 214, 22, 20, null);
+                if(InputHandler.MouseButton == 1){
+                    System.out.println("Help!");
+                }
+            }else{
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/help.png")), 690, 210, 80, 30, null);
+            }
+            if(InputHandler.MouseX > 690 && InputHandler.MouseX < 690 + 80 && InputHandler.MouseY > 250 && InputHandler.MouseY < 250 + 30) {
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/quit_on.png")), 690, 250, 80, 30, null);
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/arrow2.png")), 690 + 80, 254, 22, 20, null);
+                if(InputHandler.MouseButton == 1){
+                    System.exit(0);
+                }
+            }else{
+                g.drawImage(ImageIO.read(new FileInputStream("res/textures/quit.png")), 690, 250, 80, 30, null);
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Verdana", 0, 20));
-        g.drawString("Play", 700, 90);
         g.dispose();
         bs.show();
     }

@@ -50,18 +50,19 @@ public class InputHandler implements KeyListener, FocusListener, MouseListener, 
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        MouseButton = e.getButton();
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        MouseButton = e.getButton();
         MousePX = e.getX();
         MousePY = e.getY();
-        dragged = true;
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        MouseButton = 0;
         dragged = false;
     }
 
