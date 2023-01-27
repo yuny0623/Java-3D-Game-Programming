@@ -136,10 +136,71 @@ public class Render3D extends Render{
                 }
             }
         }
+
+        for(int xBlock = -size; xBlock <= size; xBlock++) {
+            for (int zBlock = -size; zBlock <= size; zBlock++) {
+                Block block = level.create(xBlock, zBlock);
+                for(int s = 0; s < block.sprites.size(); s++){
+                    Sprite sprite = block.sprites.get(s);
+                    renderSprite(xBlock+ sprite.x, sprite.y,zBlock + sprite.z);
+                }
+            }
+        }
+    }
+
+    public void renderSprite(double x, double y, double z){
+        double upCorrect = -0.125;
+        double rightCorrect = 0.0625;
+        double forwardCorrect = 0.0625;
+        double walkCorrect = 0.0625;
+
+        double xc = ((x / 2) - (right * rightCorrect)) * 2;
+        double yc = ((y / 2) - (up * upCorrect))+ (walking * walkCorrect) * 2; // Sprites에도 걷기 연출 적용
+        double zc = ((z / 2) - (forward * forwardCorrect)) * 2;
+
+        double rotX = xc * cosine - zc * sine;
+        double rotY = yc;
+        double rotZ = zc * cosine + xc * sine;
+
+        double xCenter = 400.0;
+        double yCenter = 300.0;
+
+        double xPixel = rotX / rotZ * height + xCenter;
+        double yPixel = rotY / rotZ * height + yCenter;
+
+        double xPixelL = xPixel - 16 / rotZ;
+        double xPixelR = xPixel + 16 / rotZ;
+
+        double yPixelL = yPixel - 16 / rotZ;
+        double yPixelR = yPixel + 16 / rotZ;
+
+        int xpl = (int) xPixelL;
+        int xpr = (int) xPixelR;
+        int ypl = (int) yPixelL;
+        int ypr = (int) yPixelR;
+
+        if(xpl < 0 )
+            xpl = 0;
+        if(xpr > width )
+            xpr = width;
+        if(ypl < 0 )
+            ypl = 0;
+        if(ypr > height )
+            ypr = height;
+
+        rotZ *= 8; // to make sprites more darker
+
+        for(int yp = ypl; yp < ypr; yp++){
+            for(int xp = xpl; xp < xpr; xp++){
+                if(zBuffer[xp + yp * width] > rotZ){
+                    pixels[xp + yp * width] = 0xFF0000;
+                    zBuffer[xp + yp * width] = rotZ;
+                }
+            }
+        }
     }
 
     public void renderWall(double xLeft, double xRight, double zDistanceLeft, double zDistanceRight, double yHeight){
-
         double upCorrect = 0.0625;
         double rightCorrect = 0.0625;
         double forwardCorrect = 0.0625;

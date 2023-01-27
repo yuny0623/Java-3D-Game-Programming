@@ -1,5 +1,7 @@
 package org.java3d.level;
 
+import org.java3d.graphics.Sprite;
+
 import java.util.Random;
 
 public class Level {
@@ -18,6 +20,9 @@ public class Level {
                     block = new SolidBlock();
                 }else{
                     block = new Block();
+                    if(random.nextInt(5) == 0) {
+                        block.addSprite(new Sprite(0, 0, 0));
+                    }
                 }
                 blocks[x + y * width] = block;
             }

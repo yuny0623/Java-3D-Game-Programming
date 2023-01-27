@@ -10,8 +10,9 @@ public class Controller {
     public static boolean crouchWalk = false;
     public static boolean runWalk =  false;
 
-    public void tick(boolean forward, boolean back, boolean left, boolean right, boolean jump, boolean crouch, boolean run){
-        double rotationSpeed = 0.002 * Display.MouseSpeed; // 좌우 회전 속도 제어 -> 마우스 속도에 가속도를 준다. 마우스가 빨리 움직일 수록 실제 화면 회전도 빠르게 움직이게 한다.
+    public void tick(boolean forward, boolean back, boolean left, boolean right, boolean rleft, boolean rright, boolean jump, boolean crouch, boolean run){
+        // double rotationSpeed = 0.002 * Display.MouseSpeed; // 좌우 회전 속도 제어 -> 마우스 속도에 가속도를 준다. 마우스가 빨리 움직일 수록 실제 화면 회전도 빠르게 움직이게 한다.
+        double rotationSpeed = 0.044; // 방향키 회전 제어
         double walkSpeed = 0.5;     // 평균 걷기 속도
         double jumpHeight = 0.5;    // 점프 높이 제어
         double crouchHeight = 0.33; // 앉았을때의 높이 제어
@@ -37,6 +38,17 @@ public class Controller {
 
             walk = true;
         }
+
+        // rotation for key control
+        if(rleft){
+            rotationa -= rotationSpeed;
+        }
+        if(rright){
+            rotationa += rotationSpeed;
+        }
+
+        /*
+        // rotation for mouse control
         if(turnLeft){
             if(InputHandler.MouseButton == 3){
 
@@ -51,7 +63,10 @@ public class Controller {
             }else {
                 rotationa += rotationSpeed;
             }
-        }
+        }*/
+
+
+
         if(jump){
             y += jumpHeight;
             run = false; // 점프 중일때는 달릴 수 없다.
@@ -76,7 +91,6 @@ public class Controller {
         if(!run){
             runWalk = false;
         }
-
 
         xa += (xMove * Math.cos(rotation) + zMove * Math.sin(rotation)) * walkSpeed;
         za += (zMove * Math.cos(rotation) - xMove * Math.sin(rotation)) * walkSpeed;

@@ -11,7 +11,8 @@
     ⬅️ A: 좌로 이동
     ⬇️ S: 후진  
     ➡️ D: 우로 이동 
-    🖱️ Mouse: 시점 변환 
+    🖱️  Mouse: 시점 변환 
+    ⌨️ Keyboard 방향키 좌우: 시점 변환 
 ```
 
 ## ❓ Why
@@ -223,10 +224,24 @@
     Canvas에서 호출할 경우 Canvas의 getLocation을 호출하기 때문에 드래그가 깨지게 됨. 
 
 ✅ 3D Game Programming - Episode 30 - Colour Processing In-Depth
-    새로운 프로젝트 진행. 
-
+    새로운 프로젝트 진행. 2D movement 구현 및 충돌 처리 구현. 다른 리포에 구현함. 
+    레벨 디자인에 대해 알아본다. 게임의 맵을 구성할 수 있는 표현 방식.     
+        
 ✅ 3D Game Programming - Episode 31 - Sprites!
+    Sprite를 추가한다. 벽을 제외한 평면 공간에 새로운 오브젝트를 표현한다. 
+    
 ✅ 3D Game Programming - Episode 32 - Sprite Mapping
+
+
 ✅ 3D Game Programming - Episode 33 - High Resolution Rendering
+
+
 ✅ 3D Game Programming - Episode 34 - Entities
+
+
+```
+
+## 📎 Reference 
+```
+https://thecherno.com/
 ```
