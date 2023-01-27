@@ -231,7 +231,9 @@
     Sprite를 추가한다. 벽을 제외한 평면 공간에 새로운 오브젝트를 표현한다. 
     
 ✅ 3D Game Programming - Episode 32 - Sprite Mapping
-
+    Sprite에 텍스쳐를 적용한다. 
+    Sprite에 투명 효과를 적용하고 랜덤으로 생성될 수 있도록 한다.
+    (Sprite의 특정 RGB를 렌더링하지 않는 방식으로 투명 효과를 적용한다.) 
 
 ✅ 3D Game Programming - Episode 33 - High Resolution Rendering
 
