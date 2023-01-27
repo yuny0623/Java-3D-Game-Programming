@@ -33,7 +33,7 @@ public class Render3D extends Render{
         }
 
         double floorPosition = 8;
-//        double ceilingPosition = 8;
+//        double ceilingPosition = 8; // 기본값. 2단 벽과 맞는 값임.
         double ceilingPosition = 20;
         // double ceilingPosition = Math.sin(game.time / 10) + 10; // 이렇게 하면 천장이 움직이는 연출을 할 수 있다. 해당 연출은 바닥에도 적용할 수 있다.
         //double ceilingPosition = 800; // 이 값을 800 정도로 하면 천장이 사라지는데 그러면 sky 연출을 할 수 있다.
@@ -86,10 +86,10 @@ public class Render3D extends Render{
                 zBuffer[x + y * width] = z;
                 if(c == 0) {
                     //pixels[x + y * width] = ((xPix & 15) * 16) | ((yPix & 15) * 16) << 8;    // 기본값 사용하기
-                    pixels[x + y * width] = Texture.block.pixels[(xPix & 30) + (yPix & 30) * spriteSheetWidth]; // 텍스쳐 적용하기}
+                    pixels[x + y * width] = Texture.block.pixels[(xPix & 31) + (yPix & 31) * spriteSheetWidth]; // 텍스쳐 적용하기}
                 }
                 else{
-                    pixels[x + y * width] = Texture.block.pixels[(xPix & 30) + 32 + (yPix & 30) * spriteSheetWidth]; // 텍스쳐 적용하기
+                    pixels[x + y * width] = Texture.block.pixels[(xPix & 31) + 32 + (yPix & 31) * spriteSheetWidth]; // 텍스쳐 적용하기
                 }
                 if (z > 500){
                     pixels[x + y * width] = 0;
@@ -210,7 +210,7 @@ public class Render3D extends Render{
                 int xTexture = (int) (8 * pixelRotationX * 4);
                 if(zBuffer[xp + yp * width] > rotZ){
                     // pixels[xp + yp * width] = xTexture * 32 + yTexture * 32 * 256;// Texture.floor.pixels[(xTexture & 7) + (yTexture & 7) * 16];
-                    int colour = Texture.block.pixels[((xTexture & 30) + 96) + (yTexture & 30) * spriteSheetWidth];
+                    int colour = Texture.block.pixels[((xTexture & 31) + 96) + (yTexture & 31) * spriteSheetWidth];
                     if(colour != 0xFFFFAEC9) {
                         pixels[xp + yp * width] = colour;
                         zBuffer[xp + yp * width] = rotZ;
@@ -316,7 +316,7 @@ public class Render3D extends Render{
             for(int y = yPixelTopInt; y < yPixelBottomInt; y++){
                 double pixelRotationY = (y - yPixelTop) / (yPixelBottom - yPixelTop);
                 int yTexture = (int) (8 * pixelRotationY * 4);
-                pixels[x + y * width] = Texture.block.pixels[((xTexture & 30) + 64) + (yTexture & 30) * spriteSheetWidth]; // 텍스쳐 적용하기
+                pixels[x + y * width] = Texture.block.pixels[((xTexture & 31) + 64) + (yTexture & 31) * spriteSheetWidth]; // 텍스쳐 적용하기
                 // pixels[x + y * width] = xTexture * 100 + yTexture * 100 * 256;
 
                 zBuffer[x + y * width] = 1/ (tex1 + (tex2 - tex1) * pixelRotation) * 8;

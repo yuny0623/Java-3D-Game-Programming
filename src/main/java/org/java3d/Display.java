@@ -124,7 +124,6 @@ public class Display extends Canvas implements Runnable{
                 }
                 // render();
             }
-
         }
     }
 

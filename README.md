@@ -1,4 +1,4 @@
-# 🎮 [Graphics Study] 3D Game Programming with Java
+# 🎮 [Graphics Study] 3D Game Programming
 
 ## 📅 Date 
 ```
@@ -236,14 +236,10 @@
     (Sprite의 특정 RGB를 렌더링하지 않는 방식으로 투명 효과를 적용한다.) 
 
 ✅ 3D Game Programming - Episode 33 - High Resolution Rendering
-
+    Texture를 32x32사이즈 텍스쳐맵으로 관리함. 천장과 바닥을 분리해서 렌더링할 수 있음. 
+    텍스쳐를 커스텀하고 파라미터값 조정을 통해서 원하는 텍스쳐를 사용할 수 있음. 
 
 ✅ 3D Game Programming - Episode 34 - Entities
+    
 
-
-```
-
-## 📎 Reference 
-```
-https://thecherno.com/
 ```
