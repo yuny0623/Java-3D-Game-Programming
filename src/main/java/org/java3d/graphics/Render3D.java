@@ -12,6 +12,9 @@ public class Render3D extends Render{
     public double[] zBufferWall;
     private double renderDistance = 5000;
     private double forward, right, up, cosine, sine, walking;
+    private int spriteSheetWidth = 24;
+    Random random = new Random();
+    double h = 0.5;
 
     public Render3D(int width, int height) {
         super(width, height);
@@ -78,7 +81,7 @@ public class Render3D extends Render{
                 int yPix = (int) (yy + forward);
                 zBuffer[x + y * width] = z;
                 //pixels[x + y * width] = ((xPix & 15) * 16) | ((yPix & 15) * 16) << 8;    // 기본값 사용하기
-                pixels[x + y * width] = Texture.floor.pixels[(xPix & 7) + (yPix & 7) * 16]; // 텍스쳐 적용하기
+                pixels[x + y * width] = Texture.floor.pixels[(xPix & 7) + (yPix & 7) * spriteSheetWidth]; // 텍스쳐 적용하기
                 if (z > 500){
                     pixels[x + y * width] = 0;
                 }
@@ -142,20 +145,20 @@ public class Render3D extends Render{
                 Block block = level.create(xBlock, zBlock);
                 for(int s = 0; s < block.sprites.size(); s++){
                     Sprite sprite = block.sprites.get(s);
-                    renderSprite(xBlock+ sprite.x, sprite.y,zBlock + sprite.z);
+                    renderSprite(xBlock+ sprite.x, sprite.y,zBlock + sprite.z, 0.5);
                 }
             }
         }
     }
 
-    public void renderSprite(double x, double y, double z){
+    public void renderSprite(double x, double y, double z, double hOffset){
         double upCorrect = -0.125;
         double rightCorrect = 0.0625;
         double forwardCorrect = 0.0625;
         double walkCorrect = 0.0625;
 
-        double xc = ((x / 2) - (right * rightCorrect)) * 2;
-        double yc = ((y / 2) - (up * upCorrect))+ (walking * walkCorrect) * 2; // Sprites에도 걷기 연출 적용
+        double xc = ((x / 2) - (right * rightCorrect)) * 2 + 0.5;
+        double yc = ((y / 2) - (up * upCorrect))+ (walking * walkCorrect) * 2 + hOffset; // Sprites에도 걷기 연출 적용
         double zc = ((z / 2) - (forward * forwardCorrect)) * 2;
 
         double rotX = xc * cosine - zc * sine;
@@ -168,11 +171,11 @@ public class Render3D extends Render{
         double xPixel = rotX / rotZ * height + xCenter;
         double yPixel = rotY / rotZ * height + yCenter;
 
-        double xPixelL = xPixel - 16 / rotZ;
-        double xPixelR = xPixel + 16 / rotZ;
+        double xPixelL = xPixel - height/2 / rotZ;
+        double xPixelR = xPixel + height/2 / rotZ;
 
-        double yPixelL = yPixel - 16 / rotZ;
-        double yPixelR = yPixel + 16 / rotZ;
+        double yPixelL = yPixel - height/2 / rotZ;
+        double yPixelR = yPixel + height/2 / rotZ;
 
         int xpl = (int) xPixelL;
         int xpr = (int) xPixelR;
@@ -191,10 +194,19 @@ public class Render3D extends Render{
         rotZ *= 8; // to make sprites more darker
 
         for(int yp = ypl; yp < ypr; yp++){
+            double pixelRotationY = (yp - yPixelR) / (yPixelL - yPixelR);
+            int yTexture = (int) (8 * pixelRotationY);
+
             for(int xp = xpl; xp < xpr; xp++){
+                double pixelRotationX = (xp - xPixelR) / (xPixelL - xPixelR);
+                int xTexture = (int) (8 * pixelRotationX);
                 if(zBuffer[xp + yp * width] > rotZ){
-                    pixels[xp + yp * width] = 0xFF0000;
-                    zBuffer[xp + yp * width] = rotZ;
+                    // pixels[xp + yp * width] = xTexture * 32 + yTexture * 32 * 256;// Texture.floor.pixels[(xTexture & 7) + (yTexture & 7) * 16];
+                    int colour = Texture.floor.pixels[((xTexture & 7) + 16) + (yTexture & 7) * spriteSheetWidth];
+                    if(colour != 0xffFD75F7) {
+                        pixels[xp + yp * width] = colour;
+                        zBuffer[xp + yp * width] = rotZ;
+                    }
                 }
             }
         }
@@ -297,7 +309,7 @@ public class Render3D extends Render{
             for(int y = yPixelTopInt; y < yPixelBottomInt; y++){
                 double pixelRotationY = (y - yPixelTop) / (yPixelBottom - yPixelTop);
                 int yTexture = (int) (8 * pixelRotationY);
-                pixels[x + y * width] = Texture.floor.pixels[((xTexture & 7) + 8) + (yTexture & 7) * 16]; // 텍스쳐 적용하기
+                pixels[x + y * width] = Texture.floor.pixels[((xTexture & 7) + 8) + (yTexture & 7) * spriteSheetWidth]; // 텍스쳐 적용하기
                 // pixels[x + y * width] = xTexture * 100 + yTexture * 100 * 256;
 
                 zBuffer[x + y * width] = 1/ (tex1 + (tex2 - tex1) * pixelRotation) * 8;
