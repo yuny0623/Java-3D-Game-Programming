@@ -28,95 +28,103 @@
     3️⃣ 그래픽 렌더링에 대한 대략적인 이해를 할 수 있도록 한다. 
 ```
 
-## ✒ How to study 
+## ✒️ How to study 
 ```
     1️⃣  강의를 듣고 예제를 구현한다. 
     2️⃣  주차별 강의에 대한 스터디 내용 정리와 후기를 남긴다. 
 ```
 
-## Study Result
-<img width="700" alt="2" src="https://user-images.githubusercontent.com/65948937/215260867-467277ac-8add-436f-892c-ac65614148a6.png">
-<img width="700" alt="6 floor" src="https://user-images.githubusercontent.com/65948937/215260870-2df3993a-b288-4898-a073-c7ff3dc2b27b.png">
-<img width="700" alt="7 floor" src="https://user-images.githubusercontent.com/65948937/215260871-172be267-3bb3-4744-b2d2-f0d94d131ec3.png">
-<img width="700" alt="8 floor" src="https://user-images.githubusercontent.com/65948937/215260838-2ab934b2-0984-472c-8b39-2bc7be8dca46.png">
-<img width="700" alt="18" src="https://user-images.githubusercontent.com/65948937/215260839-436851e2-0da8-4a40-be57-868b60f1c01a.png">
-<img width="700" alt="20" src="https://user-images.githubusercontent.com/65948937/215260847-203953c2-be3f-4a89-8c92-0f4d0694d643.png">
-<img width="700" alt="25" src="https://user-images.githubusercontent.com/65948937/215260856-ffeeb17e-7ba5-403f-a255-3ee832bf5a03.png">
-<img width="700" alt="27" src="https://user-images.githubusercontent.com/65948937/215260860-724dcfe6-0805-4115-9411-46e26cdb090d.png">
+## 📜 Study Result
+<figure class="half">
+    <img width="300" alt="2" src="https://user-images.githubusercontent.com/65948937/215260867-467277ac-8add-436f-892c-ac65614148a6.png">
+    <img width="300" alt="6 floor" src="https://user-images.githubusercontent.com/65948937/215260870-2df3993a-b288-4898-a073-c7ff3dc2b27b.png">
+</figure>
+<figure class="half">
+    <img width="300" alt="7 floor" src="https://user-images.githubusercontent.com/65948937/215260871-172be267-3bb3-4744-b2d2-f0d94d131ec3.png">
+    <img width="300" alt="8 floor" src="https://user-images.githubusercontent.com/65948937/215260838-2ab934b2-0984-472c-8b39-2bc7be8dca46.png">
+</figure>
+<figure class="half">
+    <img width="300" alt="18" src="https://user-images.githubusercontent.com/65948937/215260839-436851e2-0da8-4a40-be57-868b60f1c01a.png">
+    <img width="300" alt="20" src="https://user-images.githubusercontent.com/65948937/215260847-203953c2-be3f-4a89-8c92-0f4d0694d643.png">
+</figure>
+<figure class="half">
+    <img width="300" alt="25" src="https://user-images.githubusercontent.com/65948937/215260856-ffeeb17e-7ba5-403f-a255-3ee832bf5a03.png">
+    <img width="300" alt="27" src="https://user-images.githubusercontent.com/65948937/215260860-724dcfe6-0805-4115-9411-46e26cdb090d.png">
+</figure>
 
 ## 📚 Study Log 
 ```
-✅ 3D Game Programming - Episode 1 - Window
-    Java Swing을 사용하기에 꽤나 익숙하게 시작할 수 있다. 
-    (이전에 Swing을 써봐서 꽤 익숙한 내용이다.)
+    ✅ 3D Game Programming - Episode 1 - Window
+        Java Swing을 사용하기에 꽤나 익숙하게 시작할 수 있다. 
+        (이전에 Swing을 써봐서 꽤 익숙한 내용이다.)
+        
+    ✅ 3D Game Programming - Episode 2 - Game Loop 
+        게임 루프를 만들기 위해 thread를 응용한다. 별로 어려운 내용은 없다.
+        그냥 thread start하는 내용들이 있다.  
+        
+    ✅ 3D Game Programming - Episode 3 - Arrays
+        pixel value를 Array안에 저장하겠다는 내용이다. 
+        
+    ✅ 3D Game Programming - Episode 4 - Drawing Pixels!
+        랜덤한 값의 pixel Array를 화면에 쏴준다. 이 부분에서 이전에 본 적 없는 API가 사용된다. 
+        아래의 코드 조각들이 등장하는데 모르고 지나치기엔 꽤 중요한 부분이다. 
+        픽셀 연산과는 상관없지만 직접 화면에 쏘는 바로 그 과정이 이 부분이다. 
+        /*
+        BufferedImage img 
+        pixels = ((DataBufferInt) img.getRaster().getDataBuffer()).getData()
     
-✅ 3D Game Programming - Episode 2 - Game Loop 
-    게임 루프를 만들기 위해 thread를 응용한다. 별로 어려운 내용은 없다.
-    그냥 thread start하는 내용들이 있다.  
+        BufferStrategy
+        createBufferStrategy(3)
     
-✅ 3D Game Programming - Episode 3 - Arrays
-    pixel value를 Array안에 저장하겠다는 내용이다. 
+        Graphics g = bs.getDrawGraphics();
+            g.drawImage(img, 0, 0, WIDTH, HEIGHT, null);
+            g.dispose();
+            bs.show();
+        */
     
-✅ 3D Game Programming - Episode 4 - Drawing Pixels!
-    랜덤한 값의 pixel Array를 화면에 쏴준다. 이 부분에서 이전에 본 적 없는 API가 사용된다. 
-    아래의 코드 조각들이 등장하는데 모르고 지나치기엔 꽤 중요한 부분이다. 
-    픽셀 연산과는 상관없지만 직접 화면에 쏘는 바로 그 과정이 이 부분이다. 
-    /*
-    BufferedImage img 
-    pixels = ((DataBufferInt) img.getRaster().getDataBuffer()).getData()
-
-    BufferStrategy
-    createBufferStrategy(3)
-
-    Graphics g = bs.getDrawGraphics();
-        g.drawImage(img, 0, 0, WIDTH, HEIGHT, null);
-        g.dispose();
-        bs.show();
-    */
+    ✅ 3D Game Programming - Episode 4.5 - How Rendering Works
+        렌더링과 관련된 간략한 설명이다. 
+        
+    ✅ 3D Game Programming - Episode 5 - Playing with Pixels!
+        sin과 cos의 수학적인 기법을 사용하여 화면에 다양한 연출을 보여준다. 
+        -> 참고로 출력문은 절대 연산과정에 삽입하지 말자. 속도가 지나치게 느려진다. 
+        
+    ✅️ 3D Game Programming - Episode 6 - Performance Boosting
+        리팩토링하는 과정이다. 렌더링하지 않아도될 픽셀은 그냥 continue해도 된다. 
+        그 외의 테크닉이 소개된다. 이건 다른 분야에서도 유용하게 써먹을 수 있는 내용이다.
+        for문을 더 적게 돌 수 있는 방법이 소개된다.  
+        
+    ✅ 3D Game Programming - Episode 7 - FPS Counter
+        FPS Counter를 만드는 공식이 어떻게 되는지 이해가 가지 않을 수 있다.
+        특정 시간에 한해 렌더링이 일어나는 수를 측정하고 그 두 가지 수 사이의 계산이 진행된다. 
+        아마 프레임 율에 관한 이해가 있어야지 이해되는 부분이라고 생각된다. 
+        
+    ✅ 3D Game Programming - Episode 8 - Alpha Suppport and More
+        픽셀 연산에 관여되는 수를 바꿈으로써 다양한 연출이 가능하다. 
+        
+    ✅ 3D Game Programming - Episode 9 - Beginning 3D 
+        3D에 대한 가장 기본적인 구현이 나온다. 정면에 보이는 간단한 바닥과 천장을 보여준다. 
+        나오는 공식이 이해가 안될텐데 관련된 설명 중 가장 근접한 설명은 아래 설명인 것 같다. 
+        사실 공식을 봐도 모르겠고 설명도 잘 이해가 안간다. 아마 실제 3D 좌표계와 화면 상의 
+        차이를 공식으로 연결짓는 내용인데 난이도가 꽤 있다. 
+        /*
+        Comment below:
+        From what I can tell, he basically derived the rendering mechanism from the following perspective equations,
+        sx = x / z tan(fov / 2)
+        sy = y / z tan(fov / 2)
+        Where sx, sy are normalized screen coords and x, y, z are 3d space coords
+        You can exclude the tan to get an fov of 90 degrees
     
-✅ 3D Game Programming - Episode 4.5 - How Rendering Works
-    렌더링과 관련된 간략한 설명이다. 
+        Then since already know sx, sy and y(the floor/ceiling distance/height) you loop through the y coordinate of the screen and for each row solve for z:
+        z = 1 / sy * y
+        Then you have a z distance for every horizontal row of pixels
+        Next, for every horizontal row you loop through all the pixels based on the distance of the row from the camera,
+        x = sx * z
     
-✅ 3D Game Programming - Episode 5 - Playing with Pixels!
-    sin과 cos의 수학적인 기법을 사용하여 화면에 다양한 연출을 보여준다. 
-    -> 참고로 출력문은 절대 연산과정에 삽입하지 말자. 속도가 지나치게 느려진다. 
-    
-✅️ 3D Game Programming - Episode 6 - Performance Boosting
-    리팩토링하는 과정이다. 렌더링하지 않아도될 픽셀은 그냥 continue해도 된다. 
-    그 외의 테크닉이 소개된다. 이건 다른 분야에서도 유용하게 써먹을 수 있는 내용이다.
-    for문을 더 적게 돌 수 있는 방법이 소개된다.  
-    
-✅ 3D Game Programming - Episode 7 - FPS Counter
-    FPS Counter를 만드는 공식이 어떻게 되는지 이해가 가지 않을 수 있다.
-    특정 시간에 한해 렌더링이 일어나는 수를 측정하고 그 두 가지 수 사이의 계산이 진행된다. 
-    아마 프레임 율에 관한 이해가 있어야지 이해되는 부분이라고 생각된다. 
-    
-✅ 3D Game Programming - Episode 8 - Alpha Suppport and More
-    픽셀 연산에 관여되는 수를 바꿈으로써 다양한 연출이 가능하다. 
-    
-✅ 3D Game Programming - Episode 9 - Beginning 3D 
-    3D에 대한 가장 기본적인 구현이 나온다. 정면에 보이는 간단한 바닥과 천장을 보여준다. 
-    나오는 공식이 이해가 안될텐데 관련된 설명 중 가장 근접한 설명은 아래 설명인 것 같다. 
-    사실 공식을 봐도 모르겠고 설명도 잘 이해가 안간다. 아마 실제 3D 좌표계와 화면 상의 
-    차이를 공식으로 연결짓는 내용인데 난이도가 꽤 있다. 
-    /*
-    Comment below:
-    From what I can tell, he basically derived the rendering mechanism from the following perspective equations,
-    sx = x / z tan(fov / 2)
-    sy = y / z tan(fov / 2)
-    Where sx, sy are normalized screen coords and x, y, z are 3d space coords
-    You can exclude the tan to get an fov of 90 degrees
-
-    Then since already know sx, sy and y(the floor/ceiling distance/height) you loop through the y coordinate of the screen and for each row solve for z:
-    z = 1 / sy * y
-    Then you have a z distance for every horizontal row of pixels
-    Next, for every horizontal row you loop through all the pixels based on the distance of the row from the camera,
-    x = sx * z
-
-    Now you have top down 2d coords x and z which you can directly translate to texture coordinates
-    Am i on the right track? I'm very tired
-     */
-     
+        Now you have top down 2d coords x and z which you can directly translate to texture coordinates
+        Am i on the right track? I'm very tired
+         */
+         
 ✅ 3D Game Programming - Episode 10 - Floors and Animation
     floor 생성에 관한 내용이다.  
     
@@ -153,96 +161,96 @@
     해결방법: 
     https://stackoverflow.com/questions/15424834/java-lang-illegalargumentexception-input-null-when-using-imageio-read-to-lo
 
-✅ 3D Game Programming - Episode 16 - Walking, Crouching, Sprinting + More
-    게임을 run하고나서 따로 클릭을 하지 않고도 게임창에 자동으로 Focus가 맞춰져있도록 수정함. 
-    crouch모드에서는 즉 앉아서 걸을때는 걷기 속도를 감소시킨다. 
-    
-✅ 3D Game Programming - Episode 16.5 - Exporting Runnable Jars
-    jar 파일 export 하는 내용 
-    
-✅ 3D Game Programming - Episode 17 - Small Adjustments + Birthday!
-    코드 최적화 및 걷기 효과 수정 
-    
-✅ 3D Game Programming - Episode 17.5 - Creating an Applet
-    web browser 에서 돌릴 수 있도록 applet으로 만들어보자. 
-    applet은 JAR File로 export 하면 된다. runnable jar file이 아니라 그냥 JAR File이다.   
-    .html파일에 applet 태그를 선언해주면 applet사용이 가능함. 
-    
-✅ 3D Game Programming - Episode 18 - The Beginning of Walls
-    z 축에 근거한 벽 생성. z축 즉 깊이가 얕으면 화면과 가까운 벽 생성, 깊으면 화면과 멀리 떨어진 벽 생성. 
-
-✅ 3D Game Programming - Episode 18.1 - A Few More Things
-    리팩토링. Episode 18에서 wall을 생성하게 되면 wall에도 render distance가 적용되서 벽의 중간이 어둡게 보인다. 
-    이걸 해결하기 위해 Screen class에서 렌더를 돌릴때 render distance 를 돌리고 난 이후에 벽 생성을 진행하는 방식으로 수정한다. 
-
-✅ 3D Game Programming - Episode 18.5 - Creating an EXE File in Java
-    jar파일을 EXE파일로 생성하기, Launch4j를 활용함. 
-    
-✅ 3D Game Programming - Episode 19 - Rendering Walls
-    rotation에 따라 sreen에 생성한 wall도 자연스러운 방향으로 렌더될 수 있도록 수정. 
-
-✅ 3D Game Programming - Episode 20 - Continuing Walls, Fixing Bugs, and Managing Crashes
-    벽 생성을 하고 나서 벽을 보고 걷게 되면 벽에도 마찬가지로 걷기 효과가 적용된다. 
-    그래서 벽이 위아래로 bounce하는 연출이 나온다. 벽 or object 걷기 효과가 적용되면 안되기 떄문에 이와 관련된
-    리팩토링을 진행한다. 
-    
-✅ 3D Game Programming - Episode 21 - Texturing Walls, Fixing Clipping, and Fixing the Mouse
-    생성된 wall에 texture 를 입힌다. 텍스쳐를 하나의 이미지 파일로 간주하고 텍스쳐 하나하나는 해당 이미지에서
-    일종의 섹터로 구분해서 읽어들인다. 마인크래프트에서 텍스쳐를 관리하는 방식과 비슷한 방식이다. 
-    
-✅ 3D Game Programming - Episode 22 - Random Level Generator + Properly Fixing Clipping
-    랜덤 벽을 생성해서 미로를 연출해본다. 벽이 겹쳐 보이는 Clipping을 해결하기 위한 리팩토링이 진행된다. 
-    아직 벽과의 충돌은 구현되지 않아서 벽이 통과되는 버그가 있음. 
-
-✅ 3D Game Programming - Episode 23 - Graphical User Interface(GUI) Launcher
-    Launcher를 만들어본다. 스크린 사이즈를 조정하고 간단한 play 준비 화면을 제공한다. 
-    기본적인 GUI프로그래밍과 관련된 내용임. 
-    
-✅ 3D Game Programming - Episode 24 - Making Our Launcher Work
-    전편에 이어지는 기본적인 GUI프로그래밍과 관련된 내용. 
-    
-✅ 3D Game Programming - Episode 25 - Writing and Reading Files
-    resolution 정보 즉 화면 크기 정보를 파일로 저장하고 쓰고 읽을 수 있게 구현함. 
-    이전 설정 정보를 XML파일에 저장한다. Properties를 활용한다. file IO 기능을 활용한다. 
-
-✅ 3D Game Programming - Episode 26 - Custom Resolutions
-    Resolution을 직접 설정할 수 있도록 JTextField를 활용함. 
-    
-✅ 3D Game Programming - Episode 27 - Decorating the Launcher
-    GUI Launcher에 Background 이미지를 삽입한다. 다만 정적인 이미지가 아닌 graphics를 활용해서 삽입한다. 
-    이 과정에서 문제가 발생. 리팩토링 및 수정은 다음 에피소드에서 진행됨. 
-    
-✅ 3D Game Programming - Episode 28 - Continuing our Custom Launcher!
-    Launcher에서 이미지를 사용해서 메뉴를 구성한다. 또한 런쳐가 드래그될 수 있도록 커스텀한다. 
-    반투명 이미지 생성 링크: https://pixlr.com/kr/remove-background/ 
-    
-✅ 3D Game Programming - Episode 29 - Launching The Game
-    싱글톤 패턴을 Launcher에 적용한다. Display의 getInstance를 통해 항상 같은 Launcher를 받아올 수 있다. 
-    추가적인 리팩토링이 진행됨. 
-    
-    이슈: 
-    런쳐를 드래그해서 이동하는 movement가 깨지는 현상이 있었음. 
-    
-    해결방법: 
-    updateFrame의 getLocation을 반드시 Jframe에서 호출해야 한다. 
-    Canvas에서 호출할 경우 Canvas의 getLocation을 호출하기 때문에 드래그가 깨지게 됨. 
-
-✅ 3D Game Programming - Episode 30 - Colour Processing In-Depth
-    새로운 프로젝트 진행. 2D movement 구현 및 충돌 처리 구현. 다른 리포에 구현함. 
-    레벨 디자인에 대해 알아본다. 게임의 맵을 구성할 수 있는 표현 방식.     
+    ✅ 3D Game Programming - Episode 16 - Walking, Crouching, Sprinting + More
+        게임을 run하고나서 따로 클릭을 하지 않고도 게임창에 자동으로 Focus가 맞춰져있도록 수정함. 
+        crouch모드에서는 즉 앉아서 걸을때는 걷기 속도를 감소시킨다. 
         
-✅ 3D Game Programming - Episode 31 - Sprites!
-    Sprite를 추가한다. 벽을 제외한 평면 공간에 새로운 오브젝트를 표현한다. 
+    ✅ 3D Game Programming - Episode 16.5 - Exporting Runnable Jars
+        jar 파일 export 하는 내용 
+        
+    ✅ 3D Game Programming - Episode 17 - Small Adjustments + Birthday!
+        코드 최적화 및 걷기 효과 수정 
+        
+    ✅ 3D Game Programming - Episode 17.5 - Creating an Applet
+        web browser 에서 돌릴 수 있도록 applet으로 만들어보자. 
+        applet은 JAR File로 export 하면 된다. runnable jar file이 아니라 그냥 JAR File이다.   
+        .html파일에 applet 태그를 선언해주면 applet사용이 가능함. 
+        
+    ✅ 3D Game Programming - Episode 18 - The Beginning of Walls
+        z 축에 근거한 벽 생성. z축 즉 깊이가 얕으면 화면과 가까운 벽 생성, 깊으면 화면과 멀리 떨어진 벽 생성. 
+
+    ✅ 3D Game Programming - Episode 18.1 - A Few More Things
+        리팩토링. Episode 18에서 wall을 생성하게 되면 wall에도 render distance가 적용되서 벽의 중간이 어둡게 보인다. 
+        이걸 해결하기 위해 Screen class에서 렌더를 돌릴때 render distance 를 돌리고 난 이후에 벽 생성을 진행하는 방식으로 수정한다. 
     
-✅ 3D Game Programming - Episode 32 - Sprite Mapping
-    Sprite에 텍스쳐를 적용한다. 
-    Sprite에 투명 효과를 적용하고 랜덤으로 생성될 수 있도록 한다.
-    (Sprite의 특정 RGB를 렌더링하지 않는 방식으로 투명 효과를 적용한다.) 
-
-✅ 3D Game Programming - Episode 33 - High Resolution Rendering
-    Texture를 32x32사이즈 텍스쳐맵으로 관리함. 천장과 바닥을 분리해서 렌더링할 수 있음. 
-    텍스쳐를 커스텀하고 파라미터값 조정을 통해서 원하는 텍스쳐를 사용할 수 있음. 
-
-✅ 3D Game Programming - Episode 34 - Entities
-    전반적인 리팩토링을 진행한다. Player 클래스와 Entity, Mob클래스를 새롭게 생성한다. 
+    ✅ 3D Game Programming - Episode 18.5 - Creating an EXE File in Java
+        jar파일을 EXE파일로 생성하기, Launch4j를 활용함. 
+        
+    ✅ 3D Game Programming - Episode 19 - Rendering Walls
+        rotation에 따라 sreen에 생성한 wall도 자연스러운 방향으로 렌더될 수 있도록 수정. 
+    
+    ✅ 3D Game Programming - Episode 20 - Continuing Walls, Fixing Bugs, and Managing Crashes
+        벽 생성을 하고 나서 벽을 보고 걷게 되면 벽에도 마찬가지로 걷기 효과가 적용된다. 
+        그래서 벽이 위아래로 bounce하는 연출이 나온다. 벽 or object 걷기 효과가 적용되면 안되기 떄문에 이와 관련된
+        리팩토링을 진행한다. 
+        
+    ✅ 3D Game Programming - Episode 21 - Texturing Walls, Fixing Clipping, and Fixing the Mouse
+        생성된 wall에 texture 를 입힌다. 텍스쳐를 하나의 이미지 파일로 간주하고 텍스쳐 하나하나는 해당 이미지에서
+        일종의 섹터로 구분해서 읽어들인다. 마인크래프트에서 텍스쳐를 관리하는 방식과 비슷한 방식이다. 
+        
+    ✅ 3D Game Programming - Episode 22 - Random Level Generator + Properly Fixing Clipping
+        랜덤 벽을 생성해서 미로를 연출해본다. 벽이 겹쳐 보이는 Clipping을 해결하기 위한 리팩토링이 진행된다. 
+        아직 벽과의 충돌은 구현되지 않아서 벽이 통과되는 버그가 있음. 
+    
+    ✅ 3D Game Programming - Episode 23 - Graphical User Interface(GUI) Launcher
+        Launcher를 만들어본다. 스크린 사이즈를 조정하고 간단한 play 준비 화면을 제공한다. 
+        기본적인 GUI프로그래밍과 관련된 내용임. 
+        
+    ✅ 3D Game Programming - Episode 24 - Making Our Launcher Work
+        전편에 이어지는 기본적인 GUI프로그래밍과 관련된 내용. 
+        
+    ✅ 3D Game Programming - Episode 25 - Writing and Reading Files
+        resolution 정보 즉 화면 크기 정보를 파일로 저장하고 쓰고 읽을 수 있게 구현함. 
+        이전 설정 정보를 XML파일에 저장한다. Properties를 활용한다. file IO 기능을 활용한다. 
+    
+    ✅ 3D Game Programming - Episode 26 - Custom Resolutions
+        Resolution을 직접 설정할 수 있도록 JTextField를 활용함. 
+        
+    ✅ 3D Game Programming - Episode 27 - Decorating the Launcher
+        GUI Launcher에 Background 이미지를 삽입한다. 다만 정적인 이미지가 아닌 graphics를 활용해서 삽입한다. 
+        이 과정에서 문제가 발생. 리팩토링 및 수정은 다음 에피소드에서 진행됨. 
+        
+    ✅ 3D Game Programming - Episode 28 - Continuing our Custom Launcher!
+        Launcher에서 이미지를 사용해서 메뉴를 구성한다. 또한 런쳐가 드래그될 수 있도록 커스텀한다. 
+        반투명 이미지 생성 링크: https://pixlr.com/kr/remove-background/ 
+        
+    ✅ 3D Game Programming - Episode 29 - Launching The Game
+        싱글톤 패턴을 Launcher에 적용한다. Display의 getInstance를 통해 항상 같은 Launcher를 받아올 수 있다. 
+        추가적인 리팩토링이 진행됨. 
+        
+        이슈: 
+        런쳐를 드래그해서 이동하는 movement가 깨지는 현상이 있었음. 
+        
+        해결방법: 
+        updateFrame의 getLocation을 반드시 Jframe에서 호출해야 한다. 
+        Canvas에서 호출할 경우 Canvas의 getLocation을 호출하기 때문에 드래그가 깨지게 됨. 
+    
+    ✅ 3D Game Programming - Episode 30 - Colour Processing In-Depth
+        새로운 프로젝트 진행. 2D movement 구현 및 충돌 처리 구현. 다른 리포에 구현함. 
+        레벨 디자인에 대해 알아본다. 게임의 맵을 구성할 수 있는 표현 방식.     
+            
+    ✅ 3D Game Programming - Episode 31 - Sprites!
+        Sprite를 추가한다. 벽을 제외한 평면 공간에 새로운 오브젝트를 표현한다. 
+        
+    ✅ 3D Game Programming - Episode 32 - Sprite Mapping
+        Sprite에 텍스쳐를 적용한다. 
+        Sprite에 투명 효과를 적용하고 랜덤으로 생성될 수 있도록 한다.
+        (Sprite의 특정 RGB를 렌더링하지 않는 방식으로 투명 효과를 적용한다.) 
+    
+    ✅ 3D Game Programming - Episode 33 - High Resolution Rendering
+        Texture를 32x32사이즈 텍스쳐맵으로 관리함. 천장과 바닥을 분리해서 렌더링할 수 있음. 
+        텍스쳐를 커스텀하고 파라미터값 조정을 통해서 원하는 텍스쳐를 사용할 수 있음. 
+    
+    ✅ 3D Game Programming - Episode 34 - Entities
+        전반적인 리팩토링을 진행한다. Player 클래스와 Entity, Mob클래스를 새롭게 생성한다. 
 ```
