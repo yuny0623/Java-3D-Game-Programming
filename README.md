@@ -2,7 +2,7 @@
 
 ## 📅 Date 
 ```
-    📆 2023.01.19 ~ 
+    📆 2023.01.19 ~ 2023.01.28 
 ```
 
 ## 🕹️ How to play 
@@ -35,10 +35,14 @@
 ```
 
 ## Study Result
-```
-
-
-```
+<img width="700" alt="2" src="https://user-images.githubusercontent.com/65948937/215260867-467277ac-8add-436f-892c-ac65614148a6.png">
+<img width="700" alt="6 floor" src="https://user-images.githubusercontent.com/65948937/215260870-2df3993a-b288-4898-a073-c7ff3dc2b27b.png">
+<img width="700" alt="7 floor" src="https://user-images.githubusercontent.com/65948937/215260871-172be267-3bb3-4744-b2d2-f0d94d131ec3.png">
+<img width="700" alt="8 floor" src="https://user-images.githubusercontent.com/65948937/215260838-2ab934b2-0984-472c-8b39-2bc7be8dca46.png">
+<img width="700" alt="18" src="https://user-images.githubusercontent.com/65948937/215260839-436851e2-0da8-4a40-be57-868b60f1c01a.png">
+<img width="700" alt="20" src="https://user-images.githubusercontent.com/65948937/215260847-203953c2-be3f-4a89-8c92-0f4d0694d643.png">
+<img width="700" alt="25" src="https://user-images.githubusercontent.com/65948937/215260856-ffeeb17e-7ba5-403f-a255-3ee832bf5a03.png">
+<img width="700" alt="27" src="https://user-images.githubusercontent.com/65948937/215260860-724dcfe6-0805-4115-9411-46e26cdb090d.png">
 
 ## 📚 Study Log 
 ```
@@ -240,6 +244,5 @@
     텍스쳐를 커스텀하고 파라미터값 조정을 통해서 원하는 텍스쳐를 사용할 수 있음. 
 
 ✅ 3D Game Programming - Episode 34 - Entities
-    
-
+    전반적인 리팩토링을 진행한다. Player 클래스와 Entity, Mob클래스를 새롭게 생성한다. 
 ```
