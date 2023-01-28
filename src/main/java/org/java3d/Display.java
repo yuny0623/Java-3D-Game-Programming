@@ -91,38 +91,34 @@ public class Display extends Canvas implements Runnable{
         }
     }
     public void run(){
-        int frames = 0; // amount of frames
-        double unprocessedSeconds = 0;
         long previousTime = System.nanoTime();
-        double secondsPerTick = 1 / 60.0;
-        int tickCount = 0;
-        boolean ticked = false;
+        double ns = 1000000000.0 / 60.0;
+        double delta =0;
+        int frames = 0; // amount of frames
+        int updates = 0;
+        long timer = System.currentTimeMillis();
         requestFocus(); // 마우스를 클릭하지 않고도 게임 창에 이미 진입하게 해줌. 미리 Focus를 맞춰줌.
 
+        // fps counter
         while(running){
-            // fps counter
             long currentTime = System.nanoTime();
-            long passedTime = currentTime - previousTime;
+            delta += (currentTime - previousTime) / ns;
             previousTime = currentTime;
-            unprocessedSeconds += passedTime / 1000000000.0;
-            // launcher.updateFrame();
-            while(unprocessedSeconds > secondsPerTick){
+
+            if(delta >= 1){
                 tick();
-                unprocessedSeconds -= secondsPerTick;
-                ticked = true;
-                tickCount++;
-                if(tickCount % 60 == 0){
-                    System.out.println(frames + "fps");
-                    fps = frames;
-                    previousTime += 1000;
-                    frames = 0;
-                }
-                if(ticked){
-                    render();
-                    // renderMenu();
-                    frames++;
-                }
-                // render();
+                updates++;
+                delta--;
+            }
+            render();
+            frames++;
+
+            while(System.currentTimeMillis() - timer > 1000) { // 1000 means 1 sec
+                timer += 1000;
+                System.out.println(updates + "ups, " + frames + "fps");
+                fps = frames;
+                frames = 0;
+                updates = 0;
             }
         }
     }
