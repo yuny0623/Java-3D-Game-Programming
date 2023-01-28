@@ -1,18 +1,36 @@
 package org.java3d.level;
 
+import org.java3d.Entity.Entity;
 import org.java3d.graphics.Sprite;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Level {
     public Block[] blocks;
     public final int width, height;
+    final Random random = new Random();
+    private List<Entity> entities = new ArrayList<>();
 
     public Level(int width, int height){
         this.width = width;
         this.height = height;
         blocks = new Block[width * height];
-        Random random = new Random();
+        generateLevel();
+
+    }
+
+    public void tick(){
+        for(int i = 0; i < entities.size(); i++){
+            entities.get(i).tick();
+        }
+    }
+    public void addEntity(Entity e){
+        entities.add(e);
+    }
+
+    public void generateLevel(){
         for(int y = 0; y < height; y ++){
             for(int x = 0; x < width; x++){
                 Block block = null;

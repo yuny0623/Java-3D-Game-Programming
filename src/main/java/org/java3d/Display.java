@@ -2,7 +2,7 @@ package org.java3d;
 
 import org.java3d.graphics.Screen;
 import org.java3d.gui.Launcher;
-import org.java3d.input.Controller;
+import org.java3d.Entity.mob.Player;
 import org.java3d.input.InputHandler;
 
 import java.awt.*;
@@ -41,10 +41,10 @@ public class Display extends Canvas implements Runnable{
         setMinimumSize(size);
         setMaximumSize(size);
         screen = new Screen(getGameWidth(), getGameHeight());
-        game = new Game();
+        input = new InputHandler();
+        game = new Game(input);
         img = new BufferedImage(getGameWidth(), getGameHeight(), BufferedImage.TYPE_INT_RGB);   // RGB로 세팅
         pixels = ((DataBufferInt) img.getRaster().getDataBuffer()).getData(); // 버퍼를 통해 변환
-        input = new InputHandler();
 
         addKeyListener(input);
         addFocusListener(input);
@@ -125,18 +125,19 @@ public class Display extends Canvas implements Runnable{
 
     // handle time. frame extra...
     private void tick(){ // what tick method does updates our game.
-        game.tick(input.key);
+        input.tick();
+        game.tick();
 
         newX = InputHandler.MouseX;
         if(newX > oldX){
-            Controller.turnRight = true;
+            Player.turnRight = true;
         }
         if(newX < oldX) {
-            Controller.turnLeft = true;
+            Player.turnLeft = true;
         }
         if(newX == oldX){
-            Controller.turnLeft = false;
-            Controller.turnRight = false;
+            Player.turnLeft = false;
+            Player.turnRight = false;
         }
         MouseSpeed = Math.abs(newX - oldX);
         oldX = newX;

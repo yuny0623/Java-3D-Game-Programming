@@ -15,6 +15,21 @@ public class InputHandler implements KeyListener, FocusListener, MouseListener, 
     public static int MouseButton;
     public static boolean dragged = false;
 
+    public boolean forward, back, left, right, rleft, rright, jump, crouch, run;
+
+    public void tick(){
+        forward = key[KeyEvent.VK_W];
+        back = key[KeyEvent.VK_S];
+        left = key[KeyEvent.VK_A];
+        right = key[KeyEvent.VK_D];
+        rright = key[KeyEvent.VK_RIGHT];
+        rleft = key[KeyEvent.VK_LEFT];
+        jump = key[KeyEvent.VK_SPACE];
+        crouch = key[KeyEvent.VK_CONTROL]; // 앉기
+        run = key[KeyEvent.VK_SHIFT];
+    }
+
+
     @Override
     public void focusGained(FocusEvent e) {
 

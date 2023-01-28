@@ -1,7 +1,7 @@
 package org.java3d.graphics;
 
 import org.java3d.Game;
-import org.java3d.input.Controller;
+import org.java3d.Entity.mob.Player;
 import org.java3d.level.Block;
 import org.java3d.level.Level;
 
@@ -38,13 +38,13 @@ public class Render3D extends Render{
         // double ceilingPosition = Math.sin(game.time / 10) + 10; // 이렇게 하면 천장이 움직이는 연출을 할 수 있다. 해당 연출은 바닥에도 적용할 수 있다.
         //double ceilingPosition = 800; // 이 값을 800 정도로 하면 천장이 사라지는데 그러면 sky 연출을 할 수 있다.
 
-        forward = game.controls.z;
-        right = game.controls.x;
-        up = game.controls.y; // 점프 구현
+        forward = game.player.z;
+        right = game.player.x;
+        up = game.player.y; // 점프 구현
         walking = 0;  // 초기화
         // double rotation = 0;
         // double rotation = Math.sin(game.time / 40.8) * 0.5;
-        double rotation = game.controls.rotation;
+        double rotation = game.player.rotation;
 
         cosine = Math.cos(rotation);
         sine = Math.sin(rotation);
@@ -54,15 +54,15 @@ public class Render3D extends Render{
             double z = (floorPosition + up) / ceiling; // 점프한 높이만큼 바닥에서 더해주기
             c = 0;
 
-            if(Controller.walk){
+            if(Player.walk){
                 walking = Math.sin(game.time / 6.0) * 0.5; // 걷는 효과를 준다. 화면이 살짝 흔들리는 효과
                 z = (floorPosition + up + walking) / ceiling;
             }
-            if(Controller.crouchWalk && Controller.walk){
+            if(Player.crouchWalk && Player.walk){
                 walking = Math.sin(game.time / 6.0) * 0.25; // 앉아있는 상태로 걷는 동안에는 걷는 효과를 살짝 감소시킨다. 즉 화면흔들림을 줄인다.
                 z = (floorPosition + up + walking) / ceiling;
             }
-            if(Controller.runWalk && Controller.walk){
+            if(Player.runWalk && Player.walk){
                 walking = Math.sin(game.time / 6.0) * 0.8; // 뛰는 동안에는 걷기 효과를 좀 더 증가시킨다. 화면이 더 흔들리게 만든다.
                 z = (floorPosition + up + walking) / ceiling;
             }
@@ -71,7 +71,7 @@ public class Render3D extends Render{
             if (ceiling < 0){
                 z = (ceilingPosition - up) / -ceiling; // 점프한 만큼 천장에서 빼주기
                 c = 1;
-                if (Controller.walk){
+                if (Player.walk){
                     z = (ceilingPosition - up - walking) / -ceiling;
                 }
             }
