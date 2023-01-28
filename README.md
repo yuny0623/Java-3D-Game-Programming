@@ -125,41 +125,41 @@
         Am i on the right track? I'm very tired
          */
          
-✅ 3D Game Programming - Episode 10 - Floors and Animation
-    floor 생성에 관한 내용이다.  
+    ✅ 3D Game Programming - Episode 10 - Floors and Animation
+        floor 생성에 관한 내용이다.  
+        
+    ✅ 3D Game Programming - Episode 11 - Rotation 
+        floor 상에서 대각선, 전진, 후진, 우회전, 좌회전 등을 가능하게함. 이때 rotation
+        의 경우 회전 동작인데 회전을 하려면 원을 그릴 수 있어야함. 원을 그리기 위해서 sin과 cos을 활용한다. 
+        
+    ✅ 3D Game Programming - Episode 12 - User Input
+        우리가 게임을 조작하는 것처럼 W A S D키를 사용해서 앞,뒤,좌,우 움직임을 실행할 수 있도록 한다. 
+        Key Event를 받아서 해당 키에 대한 조작을 실행한다. 
+         
+    ✅ 3D Game Programming - Episode 13 - Render Distance Limiter!
+        floor에서 먼 거리까지 렌더링을 하기 때문에 보기 좋지 않은 부분이 있다. 
+        이걸 gradient까지 넣어서 자연스럽게 거리표현까지 하면서도 먼 거리를 표현할 수 있을까? 
+        그에 대해 다룬다. 
     
-✅ 3D Game Programming - Episode 11 - Rotation 
-    floor 상에서 대각선, 전진, 후진, 우회전, 좌회전 등을 가능하게함. 이때 rotation
-    의 경우 회전 동작인데 회전을 하려면 원을 그릴 수 있어야함. 원을 그리기 위해서 sin과 cos을 활용한다. 
+    ✅ 3D Game Programming - Episode 14 - Basic Mouse Movement
+        마우스 커서를 추가한다. 마우스 커서가 밖으로 나가면 더 이상 회전하지 않는 이슈가 있다. 
+        해당 이슈는 이후 강좌에서 추가적으로 수정될 예정임. 마우스의 현재 위치를 알아낸 뒤 해당 위치가 
+        다음 위치와 다른지, 더 큰지, 작은지를 비교해서 좌우로 회전할 방향을 정한다. 히전은 이전에 Episode 11의 rotation에서
+        다룬 기능을 그대로 사용한다.  
+        
+    ✅ 3D Game Programming - Episode 15 - Textures + More! 
+        텍스쳐 적용을 구현한다. 텍스쳐 이미지의 int array데이터를 얻어와서 그걸 pixels인 array에
+        넣어주면 된다. 
     
-✅ 3D Game Programming - Episode 12 - User Input
-    우리가 게임을 조작하는 것처럼 W A S D키를 사용해서 앞,뒤,좌,우 움직임을 실행할 수 있도록 한다. 
-    Key Event를 받아서 해당 키에 대한 조작을 실행한다. 
-     
-✅ 3D Game Programming - Episode 13 - Render Distance Limiter!
-    floor에서 먼 거리까지 렌더링을 하기 때문에 보기 좋지 않은 부분이 있다. 
-    이걸 gradient까지 넣어서 자연스럽게 거리표현까지 하면서도 먼 거리를 표현할 수 있을까? 
-    그에 대해 다룬다. 
-
-✅ 3D Game Programming - Episode 14 - Basic Mouse Movement
-    마우스 커서를 추가한다. 마우스 커서가 밖으로 나가면 더 이상 회전하지 않는 이슈가 있다. 
-    해당 이슈는 이후 강좌에서 추가적으로 수정될 예정임. 마우스의 현재 위치를 알아낸 뒤 해당 위치가 
-    다음 위치와 다른지, 더 큰지, 작은지를 비교해서 좌우로 회전할 방향을 정한다. 히전은 이전에 Episode 11의 rotation에서
-    다룬 기능을 그대로 사용한다.  
-    
-✅ 3D Game Programming - Episode 15 - Textures + More! 
-    텍스쳐 적용을 구현한다. 텍스쳐 이미지의 int array데이터를 얻어와서 그걸 pixels인 array에
-    넣어주면 된다. 
-
-    이슈: 
-    텍스쳐를 적용하기 위해서는 8비트x8비트 짜리 원하는 이미지를 생성하고 그 이미지의 
-    경로를 지정해줘서 이미지를 읽어와야하는데 이때 사용하는 Texture.class.getResource(fileName)에 이슈가 있다. 
-    java.lang.IllegalArgumentException: input == null! 이라는 Exception이 발생하는데 이건 
-    경로를 제대로 지정해줘도 문제가 발생한다. 그래서 이 기능 대신에 FileInputStream을 사용해서 경로를 넘기면
-    제대로된 데이터를 얻을 수 있다. 아래 링크를 참조하면 된다.
-    
-    해결방법: 
-    https://stackoverflow.com/questions/15424834/java-lang-illegalargumentexception-input-null-when-using-imageio-read-to-lo
+        이슈: 
+        텍스쳐를 적용하기 위해서는 8비트x8비트 짜리 원하는 이미지를 생성하고 그 이미지의 
+        경로를 지정해줘서 이미지를 읽어와야하는데 이때 사용하는 Texture.class.getResource(fileName)에 이슈가 있다. 
+        java.lang.IllegalArgumentException: input == null! 이라는 Exception이 발생하는데 이건 
+        경로를 제대로 지정해줘도 문제가 발생한다. 그래서 이 기능 대신에 FileInputStream을 사용해서 경로를 넘기면
+        제대로된 데이터를 얻을 수 있다. 아래 링크를 참조하면 된다.
+       
+        해결방법: 
+        https://stackoverflow.com/questions/15424834/java-lang-illegalargumentexception-input-null-when-using-imageio-read-to-lo
 
     ✅ 3D Game Programming - Episode 16 - Walking, Crouching, Sprinting + More
         게임을 run하고나서 따로 클릭을 하지 않고도 게임창에 자동으로 Focus가 맞춰져있도록 수정함. 
