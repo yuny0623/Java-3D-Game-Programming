@@ -34,6 +34,9 @@
     2️⃣  주차별 강의에 대한 스터디 내용 정리와 후기를 남긴다. 
 ```
 
+## Download Link
+
+
 ## 📜 Study Result
 <p align="center">
     <img width="300" alt="2" src="https://user-images.githubusercontent.com/65948937/215260867-467277ac-8add-436f-892c-ac65614148a6.png">
